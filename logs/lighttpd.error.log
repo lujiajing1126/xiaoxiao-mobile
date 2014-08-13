@@ -14,3 +14,5 @@
 2014-08-13 16:56:47: (server.c.1442) [note] graceful shutdown started 
 2014-08-13 16:56:47: (server.c.1558) server stopped by UID = 501 PID = 67493 
 2014-08-13 16:56:52: (log.c.164) server started 
+2014-08-13 22:46:26: (server.c.1442) [note] graceful shutdown started 
+2014-08-13 22:46:26: (server.c.1558) server stopped by UID = 501 PID = 67493 
