@@ -6,7 +6,8 @@
     "modernizr": "~2.6.2",
     "jquery": "~1.11.0",
     "fontawesome": "~4.1.0",
-    "q": "~1.0.1"
+    "q": "~1.0.1",
+    "artTemplate": "git@github.com:aui/artTemplate.git"
   },
   "devDependencies": {}
 }
