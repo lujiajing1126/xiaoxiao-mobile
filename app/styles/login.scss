@@ -1,0 +1,54 @@
+$footerHeight: 50px;
+div.loginImg {
+	width: 100%;
+	height: 230px;
+	background: transparent url(/images/login_bg@2x.png);
+	background-size: cover;
+	background-position: center;
+}
+
+body > .container {
+	padding-top: 10px;
+	margin-bottom: 0px;
+	background-color: #fff;
+	div.input-logo {
+		padding-left: 25px;
+		height: 34px;
+		span.fa {
+			margin-top: 10px;
+		}
+	}
+}
+.thirdLoginFooter {
+	position: absolute;
+	top: 500px;
+	height: $footerHeight;
+	width: 100%;
+	color: #49D0F2;
+	background-color: #EBF0F1;
+	text-align: center;
+	font-size: 16px;
+	padding-top: 15px;
+}
+.functionFooter {
+	position: absolute;
+	top: 520px;
+	height: $footerHeight;
+	width: 100%;
+	color: #49D0F2;
+	text-align: center;
+	font-size: 16px;
+	padding-top: 15px;
+}
+
+input.form-control {
+	border-width: 0px;
+	outline-width: 0px;
+	border-radius: 0px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	&:focus {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}

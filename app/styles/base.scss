@@ -1,0 +1,41 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+// bower:scss
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+@import "../../bower_components/fontawesome/scss/font-awesome.scss";
+// endbower
+
+body {
+    overflow: hidden;
+}
+
+.btn-line {
+    width: 100%;
+    height: 45px;
+    text-align: center;
+    font-size: 16px;
+    &.btn-line-color {
+        color: #fff;
+        background-color: #00D3F5;
+    }
+    > .container {
+        height: 100%;
+        .row {
+            height: 100%;
+            > div {
+                height: 100%;
+                span {
+                    margin-top: 12px;
+                    display: block;
+                    &.fa {
+                        margin-top: 15px;
+                    }
+                }
+                > div span {
+                    width: 150px;
+                    margin-left: 13%;
+                }
+            }
+        }
+    }
+}
