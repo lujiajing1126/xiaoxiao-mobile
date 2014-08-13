@@ -15,6 +15,7 @@ $ ->
 			dataType: 'json'
 	.then (data)->
 		console.log data
+		$("#eventCardBoard").html template "eventCard",{events:data.events} if data.status is "OK"
 	.done()
 	$(document).on "click","span.logout", ->
 		location.href = window.XXWEB.loginpage

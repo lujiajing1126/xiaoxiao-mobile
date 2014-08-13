@@ -25,38 +25,55 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <nav class="header">
-            <div class="container">
-                <div class="chooseSchoolPart">
-                    <span id="dLabel" class="chooseSchool dropdown-toggle" data-toggle="dropdown">
-                        选学校 <span class="caret"></span>
-                    </span>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+        <div class="mainLayout">
+            <nav class="header">
+                <div class="container">
+                    <div class="chooseSchoolPart">
+                        <span id="dLabel" class="chooseSchool dropdown-toggle" data-toggle="dropdown">
+                            选学校 <span class="caret"></span>
+                        </span>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="showSchoolPart">
+                        <span class="nowSchool">当前: 复旦大学</span>
+                    </div>
+                    <div class="userActionPart">
+                        <span class="userName">小灰灰</span>
+                        <span class="logout">退出</span>
+                    </div>
                 </div>
-                <div class="showSchoolPart">
-                    <span class="nowSchool">当前: 复旦大学</span>
-                </div>
-                <div class="userActionPart">
-                    <span class="userName">小灰灰</span>
-                    <span class="logout">退出</span>
-                </div>
+            </nav>
+
+            <div class="container" id="eventCardBoard">
+                <script type="text/html" id="eventCard">
+                    {{each events as event i}}
+                    <div class="eventCard">
+                        <div class="eventInfo">
+                            <div class="eventName">{{eventName}}</div>
+                            <div class="eventProvider">主办发: {{eventId}}</div>
+                            <div class="likeit">
+                                <span class="fa fa-love"></span>
+                                <span class="linknum">99</span>
+                            </div>
+                        </div>
+                        <div class="opacityLayout"></div>
+                    </div>
+                    {{/each}}
+                </script>
             </div>
-        </nav>
-
-        <div class="container">
         </div>
-
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/q/q.js"></script>
+        <script src="../bower_components/artTemplate/dist/template-debug.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
