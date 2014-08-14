@@ -1,5 +1,5 @@
 userSession = localStorage.getItem "userSession"
-window.location.href = window.XXWEB.homepage if userSession is null or window.XXWEB.uuidReg.test userSession isnt false
+window.location.href = window.XXWEB.loginpage if userSession is null or window.XXWEB.uuidReg.test userSession isnt false
 
 # Auth the status of session
 window.auth = auth = ->

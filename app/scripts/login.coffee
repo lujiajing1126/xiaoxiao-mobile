@@ -15,7 +15,6 @@ $ ->
 		ongoingTouches.beginY = evt.originalEvent.changedTouches[0].clientY
 	$(document).on "touchmove",".loginImg",(evt)->
 		window.XXWEB.throttle ->
-			console.log "move"
 			ongoingTouches.endY = evt.originalEvent.changedTouches[0].clientY
 			reCalAnimation()
 		,50,window
