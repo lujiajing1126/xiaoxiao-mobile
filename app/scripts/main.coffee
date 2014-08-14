@@ -52,9 +52,15 @@ $ ->
 		ongoingMove.endY ?= 0
 		if Math.abs(ongoingMove.beginY - ongoingMove.endY) < 20 and ongoingMove.endX - ongoingMove.beginX > 50 or !!options
 			scaleSize = 1-(ongoingMove.endX - ongoingMove.beginX)/1000
+			scaleUserPanel = 0.2*(ongoingMove.endX - ongoingMove.beginX)/240 + 0.8
+			leftMove = -100 + 100*(ongoingMove.endX - ongoingMove.beginX)/240
 			$(".mainLayout").css
 				left: ongoingMove.endX - ongoingMove.beginX
 				transform: "scale(#{scaleSize})"
+			$(".userPanel").css
+				opacity: 0.2+ (ongoingMove.endX - ongoingMove.beginX)/240*0.8
+				transform: "scale(#{scaleUserPanel})"
+				left: "#{leftMove}px"
 	$(".mainLayout").scroll ->
 		reCalBackgroundPosition()
 	$(window).on "touchstart", (evt)->

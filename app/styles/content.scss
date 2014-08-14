@@ -1,0 +1,134 @@
+body {
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	width: 100%;
+}
+html, body {
+    height: 100%;
+    background-color: #1985D0;
+}
+.wrap {
+	width: 100%;
+	height: auto;
+	display: none;
+	.eventCard {
+		width: 100%;
+		height: 220px;
+		background-color: transparent;
+		background-size: auto 130%;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: relative;
+		> .opacityLayout {
+			width: 100%;
+			height: 60px;
+			background-color: #fff;
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			opacity: 0.7;
+			z-index: 5;
+		}
+		> .eventInfo {
+			width: 100%;
+			height: 60px;
+			background-color: transparent;
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			z-index: 6;
+			color: #000;
+			div.eventName {
+				padding-left: 20%;
+				position: absolute;
+				width: 80%;
+				height: 60%;
+				top: 0px;
+				left: 0px;
+				font-size: 16px;
+				overflow: hidden;
+				text-align: center;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			div.eventProvider {
+				padding-left: 20%;
+				position: absolute;
+				width: 80%;
+				height: 40%;
+				top: 60%;
+				left: 0;
+				color: #808080;
+				overflow: hidden;
+				text-align: center;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			div.likeit {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				width: 20%;
+				height: 100%;
+				span {
+					display: block;
+					height: 100%;
+					&.love {
+						position: absolute;
+						top: 0px;
+						left: 0px;
+						width: 50%;
+					}
+					&.likenum {
+						position: absolute;
+						top: 0px;
+						right: 0px;
+						width: 50%;
+						line-height: 60px;
+						font-size: 20px;
+					}
+				}
+			}
+		}
+	}
+	.eventDetails {
+		border-bottom: 1px solid gray;
+		> .container {
+			color: #808080;
+			font-size: 16px;
+			padding: 10px 15px;
+			> div {
+				margin: 5px 0px;
+			}
+		}
+	}
+	.eventDescription {
+		h3 {
+			text-align: center;
+		}
+		p {
+			text-indent: 2em;
+			font-size: 14px;
+		}
+	}
+	.learnMore {
+		padding: 16px;
+		width: 100%;
+		height: 80px;
+		background-color: #00D4F5;
+		text-align: center;
+		font-size: 18px;
+		div {
+			
+		}
+	}
+	.logo {
+		width: 100%;
+		height: 140px;
+		background-image: url(../images/01.png);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
