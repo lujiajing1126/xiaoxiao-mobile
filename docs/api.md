@@ -19,6 +19,8 @@
 	district
 	major
 	classId
+	phoneNumbers
+	emails
 
 
 /api/session/create POST
@@ -56,8 +58,8 @@
 	phoneNumer
 	gender
 
+创建组织
 /api/account/create_organization POST
-	创建组织
 	name 组织名
 
 /api/account/receive_messages GET
@@ -72,6 +74,20 @@ skip   limit
 /api/account/send_verification_request_to_phone_number
 	phone_number
 
+获取个人订阅的所有活动	
+/api/account/list_events
+	boards
+	categories
+	skip
+	limit
+ 
+订阅的活动版块
+/api/account/list_subscriptions
+
+	eventBoards[]
+	
+	
+	
 /api/user/{userid}/info GET
 	fields
 		userInfo.gender
@@ -97,8 +113,12 @@ skip   limit
 		dynamic.numberOfFriends
 		dynamic.numberOfFollowers
 		dynamic.numberOfExecutingEvents
-		dynamic.isfriend  不是好友 返回 是否关注 isFollower
-		dynamic.executingEvent    executingEvent  countPraiser 	
+		dynamic.isFriend
+		<dynamic.isfriend
+		dynamic.eventsSignedUpFor
+		<dynamic.executingEvent
+		dynamic.eventsSignedUpFor.numberOfPraisers	
+		<dynamic.eventsSignedUpFor.countPraiser 	
 
 	Homogeneous to argument
 
@@ -129,8 +149,8 @@ skip   limit
 			
 
 
+获取用户参加的社团
 /api/user/{userid}/list_organizations
-	获取用户参加的社团
 
 	organizations[]
 		id
@@ -140,67 +160,77 @@ skip   limit
 /api/user/{userId}/follow POST
 /api/user/{userId}/unfollow POST
 /api/user/{userId}/list_followed_users GET
-/api/user/{userId}/list_followers GET
+
+/api/user/{userId}/followers GET
+</api/user/{userId}/list_followers
+
 /api/user/{userId}/is_friend GET
 /api/user/{userId}/set_avatar POST
 /api/user/{userId}/avatar GET
 
 
 加入黑名单
-/api/user/{userId}/blacklist/create   post
+/api/user/{userId}/blacklist/add   post
 
 取消加入黑名单
-/api/user/{userId}/blacklist/cancle   post
+/api/user/{userId}/blacklist/remove   post
 
 黑名单列表
 
-/api/user/{userId}/blacklist/list_black  GET
+/api/user/{userId}/blacklist/list  GET
 
-users[]
+	users[]
 		id
 		name
 		nickName
 		gender
 
 获取用户所参加报名的活动列表
+/api/user/{userId}/list_events_signed_up_for  GET
+	skip
+	limit
 
-/api/user/{userId}/list_signup_events  GET
-
-userId
-skip
-limit
+	events[]
+		static
+		<executingEvent
+			id
+			name
+			location
+			category
+			begin
+			end
+			description
+			stage
+		dynamic
+			numberOfPraisers
+			<...countPraiser
 
 获取用户所关注的活动列表
-/api/user/{userId}/list_follower_events   GET
-userId
-skip
-limit
+/api/user/{userId}/list_followed_events   GET
+	userId
+	skip
+	limit
 
 
 
 
-		
-
-
-
-
+用户退出组织
 /api/org/{orgid}/quit POST
-	用户退出组织
 
+用户向组织发送加入申请
 /api/org/{orgid}/jreq/send POST
-	用户向组织发送加入申请
 
+用户撤销已经向组织发送的加入申请
 /api/org/{orgid}/jreq/cancel POST
-	用户撤销已经向组织发送的加入申请
 
+用户判断自己是否已经向该组织发送过加入申请
 /api/org/{orgid}/membership_status GET
-	用户判断自己是否已经向该组织发送过加入申请
 
 	membershipStatus: "joined", "request-sent", "request-not-sent"
 
 
+组织管理员列出收到的所有加入申请
 /api/org/{orgid}/jreq/list GET
-	组织管理员列出收到的所有加入申请
 
 	requests[]
 		id
@@ -209,21 +239,22 @@ limit
 		time
 		seen
 
+组织管理员标记一条申请已读
 /api/org/{orgid}/jreq/process/{joining_request_id}/read POST
-	组织管理员标记一条申请已读
 
+组织管理员批准一条加入申请
 /api/org/{orgid}/jreq/process/{joining_request_id}/accept POST
-	组织管理员批准一条加入申请
 
+组织管理员拒绝一条加入申请
 /api/org/{orgid}/jreq/process/{joining_request_id}/reject POST
-	组织管理员拒绝一条加入申请
 
+组织管理员忽略一条加入申请
 /api/org/{orgid}/jreq/process/{joining_request_id}/ignore POST
-	组织管理员忽略一条加入申请
 
 	
-/api/org/{orgid}/list_direct_members GET  
-	获取组织直接成员信息
+获取组织直接成员信息
+/api/org/{orgid}/direct_members GET  
+</api/org/{orgid}/list_direct_members GET  
 	skip
 	limit
 
@@ -233,18 +264,21 @@ limit
 		gender
 		nickname
 
+/api/org/{orgid}/remove_member POST
+	userId
 
+创建活动
 /api/org/{orgid}/event/create POST
-	创建活动
 
+关注社团
 /api/org/{orgId}/follow POST
-	关注社团
 
+取消社团关注 
 /api/org/{orgId}/unfollow POST
-	取消社团关注 
 
 
-/api/org/{orgId}/list_followers GET
+/api/org/{orgId}/followers GET
+</api/org/{orgId}/list_followers
 	关注社团的人员
 	skip   limit
 
@@ -285,6 +319,16 @@ limit
 
 	eventBoards[]
 
+/api/org/{orgId}/list_owned_assodirs
+
+	assodirs[]
+		name
+		parent
+		basename?
+		description
+		owner
+		secret
+
 /api/org/{orgId}/list_events GET
 	skip
 	limit
@@ -304,26 +348,27 @@ limit
 /api/org/{orgId}/set_logo POST
 	file
 
+/api/org/{orgId}/list_including_assodirs
+
 /api/org/{orgId}/appform/list_boxes
 /api/org/{orgId}/appform/create_box
 
-//申请报名表
+申请报名表
 /api/org/{orgId}/appform/create_form
-
-
-
-
-
 
 /api/event/{eventId}/follow POST
 /api/event/{eventId}/unfollow POST
-/api/event/{eventId}/list_followers GET
+
+/api/event/{eventId}/followers GET
+</api/event/{eventId}/list_followers
+
 /api/event/{eventId}/praise POST
 /api/event/{eventId}/unpraise POST
 /api/event/{eventId}/number_of_praisers POST
 /api/event/{eventId}/load GET
 	fields
 		name
+		stage
 		location
 		category
 		description
@@ -368,7 +413,8 @@ limit
 				amount
 				number
 				usage
-			signUpFields
+			signingUpFields
+			<signUpFields
 			saved
 						
 /api/event/{eventId}/publish POST
@@ -385,11 +431,11 @@ limit
 
 /api/event/{eventId}/image/drop/{fileId} POST
 /api/event/{eventId}/image/load/{fileId} GET
-/api/event/{eventId}/attachement/add POST
+/api/event/{eventId}/attachment/add POST
 	file
 
-/api/event/{eventId}/attachement/drop/{fileId} POST
-/api/event/{eventId}/attachement/load/{fileId} GET
+/api/event/{eventId}/attachment/drop/{fileId} POST
+/api/event/{eventId}/attachment/load/{fileId} GET
 /api/event/{eventId}/poster/set POST
 	file
 
@@ -412,24 +458,25 @@ limit
 		timeOfCommenting
 		user
 		inReplyingOf?
-		numberOfReplies
 		totalRows
+		countComment 
+		countInReplying
+		
+
+/api/event/{eventId}/users_sign_up	GET
 
 报名
-/api/event/{eventId}/signingup
+/api/event/{eventId}/sign_up	POST
+</api/event/{eventId}/signup
+</api/event/{eventId}/signingup
 
 取消报名
-/api/event/{eventId}/cancle_signingup
+/api/event/{eventId}/cancel_signing_up POST
+</api/event/{eventId}/cancel_signingup POST
 
-
-
-
-
-
-
-		
-		
 /api/event_board/{eventBoardName}/list_published_events  GET
+	categories
+
 	events[]
 		boradname
 		eventId
@@ -440,44 +487,47 @@ limit
 		isPraised
 
 /api/event_board/{eventBoardName}/accept		POST
- eventId
+	eventId
 
 /api/event_board/{eventBoardName}/reject		POST
- eventId  message
+	eventId
+	message
 
 /api/event_board/{eventBoardName}/list_waiting_events  GET
-skip  limit
+	skip
+	limit
 
 
 
 
 模糊查询目录信息
-/api/assodir/{assodirName}/load		GET
-assodirName  目录名
-		return    具体的assodirName
+/api/assodir/search	GET
+	name 目录名
+
+	assodirs[]
+
 申请加入目录
 /api/assodir/{assodirName}/apply	POST
-assodirName  orgId  
+	assodirName  orgId  
 
 通过邀请码直接进入组织
 /api/assodir/{assodirName}/enter	POST	
-assodirName  orgId  secret
+	assodirName  orgId  secret
 
 获取某个目录中所有的社团
-/api/assodir/{assodirName}/list_organzations	GET
-assodirName  
+/api/assodir/{assodirName}/list_organizations	GET
+	types?
 
-		return  目录中所有已经加入的组织  orgId
+	orgId
 
 目录管理者允许加入
 /api/assodir/{assodirName}/accept	POST
-assodirName  orgId  
+	orgId  
 
 
 目录管理者拒绝加入
 /api/assodir/{assodirName}/reject	POST
-
-assodirName  orgId  
+	orgId  
 
 获取所有的请求加入信息
 /api/assodir/{assodirName}/list_request_join  GET
@@ -485,110 +535,125 @@ assodirName  orgId
 
 
 申请表
-
-/org/{orgId}/appform/{afId}/load  GET 
-fields {}
-stage
-box
-title
-text
-reply
-attachments
-associatedEvents
-associatedSponsorTransactions
-timeOfSubmission
-timeOfReplying
-approved
-
-
-
-/org/{orgId}/appform/{afId}/update  POST
-
-fields {}
-stage
-box
-title
-text
-reply
-attachments
-associatedEvents
-associatedSponsorTransactions
-timeOfSubmission
-timeOfReplying
-approved
+/api/org/{orgId}/appform/{afId}/load  GET 
+	fields {}
+	stage
+	box
+	title
+	text
+	reply
+	attachments
+	associatedEvents
+	associatedSponsorTransactions
+	timeOfSubmission
+	timeOfReplying
+	approved
 
 
 
-/org/{orgId}/appform/list_boxes   get 
-orgId
-Boolean archived
+/api/org/{orgId}/appform/{afId}/update  POST
+
+	fields {}
+	stage
+	box
+	title
+	text
+	reply
+	attachments
+	associatedEvents
+	associatedSponsorTransactions
+	timeOfSubmission
+	timeOfReplying
+	approved
 
 
-/org/{orgId}/appform/list_appforms  GET
-orgId
-stage
+
+/api/org/{orgId}/appform/list_boxes   get 
+	orgId
+	Boolean archived
+
+
+/api/org/{orgId}/appform/list_appforms  GET
+	orgId
+	stage
 
 
 
-/org/{orgId}/appform_box/{afbId}/load   GET
+/api/org/{orgId}/appform_box/{afbId}/load   GET
 
-fields
+	fields
 
-/org/{orgId}/appform/{afId}/reply   POST
-approved
-reason   可以为空
+/api/org/{orgId}/appform/{afId}/reply   POST
+	approved
+	reason   可以为空
 
-/org/{orgId}/appform/{afId}/attachment/add		POST
-file
+/api/org/{orgId}/appform/{afId}/attachment/add		POST
+	file
 
-/org/{orgId}/appform/{afId}/attachment/drop{fileId}  POST 
-
-
-/org/{orgId}/appform/{afId}/attachment/load 	 GET 
-
-/org/{orgId}/appform/{afId}/event/add    POST 
-
-/org/{orgId}/appform/{afId}/event/drop{fileId}  POST 
+/api/org/{orgId}/appform/{afId}/attachment/drop{fileId}  POST 
 
 
-/org/{orgId}/appform_box/{afbId}/list_approved_appforms  GET
+/api/org/{orgId}/appform/{afId}/attachment/load 	 GET 
+
+/api/org/{orgId}/appform/{afId}/event/add    POST 
+
+/api/org/{orgId}/appform/{afId}/event/drop{fileId}  POST 
+
+/api/org/{orgId}/appform_box/{afbId}/list_approved_appforms  GET
 	
-
-
-//公告	
 发布
-/aboard/{aboardId}/announce    POST  
-name
-title
-title
+/api/aboard/{aboardId}/announce    POST  
+	name
+	title
+	title
 
 回复
-/aboard/{aboardId}/reply   POST
-messageId
-message	
+/api/aboard/{aboardId}/reply   POST
+	messageId
+	message	
+
+获取所有的回复列表
+/api/aboard/{aboardId}/replies  GET
+
+发布的公告列表
+/api/aboard/{aboardId}/announcements  GET  
 
 
+/api/aboard/{aboardId}/load_announcement  GET  
+	announcementId
 
-//签到
+	announcement
+		id
+		boardName
+		title
+		content
+		recipient
+		timeOfSending
+		replys
+		recipientsNotReplied
+
+
+** 签到 **
+
 新建签到表
-
-/account/ossu/create_signingup
-owner
-name
-fields
+/api/account/ossu/create
+</api/account/ossu/create_signingup
+	owner
+	name
+	fields
 
 加载具体的签到信息
-/ossu/{nlId}/load
+/api/ossu/{nlId}/load
 
 
 获取所有签到的人员信息
-/ossu/{nlId}/list
+/api/ossu/{nlId}/list
 
 
 设置签到 绑定一个活动
-/ossu/{nlId}/setup
-nlId
-eventId
+/api/ossu/{nlId}/setup
+	nlId
+	eventId
 
 
 
@@ -596,48 +661,79 @@ eventId
 
 用户自己可以管理的社团
 
-/account/list_admin_organizations GET  
+/api/account/list_administrated_organizations GET  
 
 
 赞助申请
 
 
-//创建赞助申请
-/org/{orgId}/sponsor/create
-
-demanding	赞助要求
-title		主题
-publicity   是否公开
-providing   是否公开
-
-
-//加载赞助 申请
-/sponsor/{sponsorId}/load    GET
+创建赞助申请
+/api/org/{orgId}/sponsor/create
+	demanding	赞助要求
+	title		主题
+	publicity   是否公开
+	providing   是否公开
 
 
-//修改赞助申请
-/sponsor/{sponsorId}/update 	POST
+加载组织发布的赞助申请
+/api/org/{orgId}/sponsor/list
+	skip
+	limit
 
-data []
-	demanding
-	title
-	providing
-	publicity
+加载赞助 申请
+/api/sponsor/{sponsorId}/load    GET
+
+
+修改赞助申请
+/api/sponsor/{sponsorId}/update 	POST
+
+	data[]
+		demanding
+		title
+		providing
+		publicity
 	
+
+关联活动	
+/api/sponsor/{sponsorId}/relation_event
+	eventId
+
+/api/sponsor/{sponsorId}/cancle_relation_event
+	eventId	
+
+
+申请认证
+/api/sponsor/{sponsorId}/apply_certification
+orgId
+
+
+/api/sponsor/{sponsorId}/cancle_apply_certification
+orgId
+
 	
-	
-  
-  
-  
+/api/sponsor/{sponsorId}/poster/set  POST
+	file
 
+/api/sponsor/{sponsorId}/poster/get  GET 
 
+/api/message/message_types	POST
 
+/api/message/load	GET
+	messageIds
 
+	messages
 
+/api/message/archive	POST
+	messageIds
 
+/api/info/load_student_residence_info_directory
+	id?
 
-
-
-
-
-
+/api/info/generate_student_autoconfig
+	data
+		JSON
+			city
+			school
+			district
+			department
+			major	
