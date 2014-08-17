@@ -35,9 +35,10 @@ nav.header {
 		width: 20%;
 		span.chooseSchool {
 			display: block;
-			margin: 15px 0px 0px 10px;
+			padding: 15px 0px 0px 10px;
 			color: #00D0F5;
 			font-size: 15px;
+			height: 50px;
 		}
 	}
 	div.showSchoolPart {
@@ -129,7 +130,7 @@ nav.header {
 	width: 100%;
 	z-index: 10;
 	background-color: #fff;
-	overflow-y: scroll;
+	overflow-y: auto;
 	> .container {
 		margin: 0;
 		padding: 0;

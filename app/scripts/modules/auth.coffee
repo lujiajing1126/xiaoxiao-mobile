@@ -7,5 +7,5 @@ window.auth = auth = ->
 		url: window.XXWEB.namespace + 'account/id?session=' + userSession,
 		dataType: 'json',
 	.then (data)->
-		# window.location.href = window.XXWEB.loginpage if data.status isnt "OK"
+		window.location.href = window.XXWEB.loginpage if data.status isnt "OK"
 		localStorage.setItem "userId",data.userId

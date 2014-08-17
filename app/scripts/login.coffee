@@ -56,8 +56,8 @@ $ ->
 						localStorage.setItem "userSession",_session
 						location.href = window.XXWEB.homepage
 					else if data.status is "Error"
-						$('#noticeContainer #msg').html data.message
-						$('#noticeContainer').show()
+						notice = Notice.getInstance()
+						notice.show text:data.message
 	$(document).on 'click','#area-login', (evt) ->
 		evt.preventDefault()
 		alert "请到手机端使用"

@@ -35,10 +35,10 @@
             <div class="userPanel">
                 <div class="userContainer">
                     <div class="userAvatar">
-                        <img class="img-circle" src="holder.js/70x70/gray" alt="avatar">
+                        <a href="#"><img class="img-circle" src="holder.js/70x70/gray" alt="avatar"></a>
                     </div>
                     <div class="userName">
-                        <span>小灰灰</span>
+                        <span></span>
                     </div>
                     <div class="userOptions">
                         <ul class="option-menu">
@@ -70,10 +70,10 @@
                             </ul>
                         </div>
                         <div class="showSchoolPart">
-                            <span class="nowSchool">当前: 复旦大学</span>
+                            <span class="nowSchool">当前: <a id="school"></a></span>
                         </div>
                         <div class="userActionPart">
-                            <span class="userName">小灰灰</span>
+                            <span class="userName"></span>
                             <span class="logout">退出</span>
                         </div>
                     </div>
@@ -82,13 +82,13 @@
                 <div class="container" id="eventCardBoard">
                     <script type="text/html" id="eventCard">
                         {{each events as event i}}
-                        <div class="eventCard">
+                        <div class="eventCard" style="background-image:url(images/1.jpg)">
                             <div class="eventInfo">
-                                <div class="eventName">{{eventName}}</div>
-                                <div class="eventProvider">主办发: {{eventId}}</div>
+                                <div class="eventName">{{event.event.name}}</div>
+                                <div class="eventProvider">地点: {{event.event.location}}</div>
                                 <div class="likeit">
                                     <span class="love"></span>
-                                    <span class="likenum">99</span>
+                                    <span class="likenum">{{event.numberOfPraisers}}</span>
                                 </div>
                             </div>
                             <div class="opacityLayout"></div>
@@ -147,6 +147,7 @@
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/q/q.js"></script>
         <script src="../bower_components/holderjs/holder.js"></script>
+        <script src="../bower_components/artTemplate/dist/template-debug.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
