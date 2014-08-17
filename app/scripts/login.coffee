@@ -53,8 +53,12 @@ $ ->
 						password: $('#password').val()
 				.done (data)->
 					if data.status is "OK"
-						localStorage.setItem "userSession",_session
-						location.href = window.XXWEB.homepage
+						try
+							localStorage.setItem "userSession",_session
+						catch error
+							$.cookie "userSession",_session, path: '/'
+						finally
+							location.href = window.XXWEB.homepage
 					else if data.status is "Error"
 						notice = Notice.getInstance()
 						notice.show text:data.message

@@ -4,10 +4,12 @@ $ ->
 		beginY: null
 		endX: null
 		endY: null
+	userSession = if localStorage.getItem("userSession") isnt null then localStorage.getItem "userSession" else $.cookie "userSession"
+	userId = if localStorage.get("userId") isnt null then localStorage.getItem "userId" else $.cookie "userId"
 	window.auth()
 	.then ->
 		Q $.ajax
-			url: "#{window.XXWEB.namespace}user/#{localStorage.getItem("userId")}/info?session=#{localStorage.getItem("userSession")}&fields=#{window.XXWEB.userInfoFields.join(',')}",
+			url: "#{window.XXWEB.namespace}user/#{userId}/info?session=#{userSession}&fields=#{window.XXWEB.userInfoFields.join(',')}",
 			type: 'get',
 			dataType: 'json'
 	.then (data)->
@@ -17,7 +19,7 @@ $ ->
 		$("a#school").html data.studentInfo.school
 	.then ->
 		Q $.ajax
-			url: "#{window.XXWEB.namespace}account/list_events?session=#{localStorage.getItem("userSession")}&skip=0&limit=10"
+			url: "#{window.XXWEB.namespace}account/list_events?session=#{userSession}&skip=0&limit=10"
 			dataType: 'json'
 	.then (data)->
 		$("#eventCardBoard").html template "eventCard",{events:data.events} if data.status is "OK"

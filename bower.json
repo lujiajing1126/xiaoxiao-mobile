@@ -8,7 +8,8 @@
     "fontawesome": "~4.1.0",
     "q": "~1.0.1",
     "artTemplate": "git@github.com:aui/artTemplate.git",
-    "holderjs": "~2.3.2"
+    "holderjs": "~2.3.2",
+    "jquery.cookie": "~1.4.1"
   },
   "devDependencies": {}
 }
