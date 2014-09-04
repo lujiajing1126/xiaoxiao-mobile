@@ -4,8 +4,20 @@ $ ->
 		beginY: null
 		endX: null
 		endY: null
-	userSession = if localStorage.getItem("userSession") isnt null then localStorage.getItem "userSession" else $.cookie "userSession"
-	userId = if localStorage.get("userId") isnt null then localStorage.getItem "userId" else $.cookie "userId"
+	userSession = null
+	userId = null
+	# 获取数据
+	try
+		userSession = localStorage.getItem 'userSession'
+		userId = localStorage.getItem 'userId'
+	catch err
+		userSession = $.cookie "userSession"
+		userId = $.cookie "userId"
+	finally
+		if !userSession?
+			userSession = $.cookie "userSession"
+		if !userId?
+			userId = $.cookie "userId"
 	window.auth()
 	.then ->
 		Q $.ajax
@@ -65,16 +77,16 @@ $ ->
 				left: "#{leftMove}px"
 	$(".mainLayout").scroll ->
 		reCalBackgroundPosition()
-	$(window).on "touchstart", (evt)->
+	$(document).on 'touchstart', '.mainLayout',(evt)->
 		ongoingMove.beginX = evt.originalEvent.changedTouches[0].clientX
 		ongoingMove.beginY = evt.originalEvent.changedTouches[0].clientY
-	$(window).on "touchmove", (evt)->
+	$(document).on "touchmove",'.mainLayout', (evt)->
 		window.XXWEB.throttle ->
 			ongoingMove.endX = evt.originalEvent.changedTouches[0].clientX
 			ongoingMove.endY = evt.originalEvent.changedTouches[0].clientY
 			reCalAnimation()
 		,50,window
-	$(window).on "touchend", (evt)->
+	$(document).on "touchend",'.mainLayout', (evt)->
 		if ongoingMove.endX - ongoingMove.beginX > 100
 			ongoingMove.beginX = 0
 			ongoingMove.beginY = null
@@ -86,5 +98,8 @@ $ ->
 			ongoingMove.endX = null
 			ongoingMove.endY = null
 		reCalAnimation(true)
-
-
+	$(document).on 'touchstart','.viewPerson' ,(evt)->
+		ongoingMove.beginX = 0
+		ongoingMove.beginY = null
+		ongoingMove.endX = 240
+		ongoingMove.endY = null

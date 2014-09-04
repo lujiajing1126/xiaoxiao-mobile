@@ -5,7 +5,7 @@
     "bootstrap-sass-official": "~3.1.0",
     "modernizr": "~2.6.2",
     "jquery": "~1.11.0",
-    "fontawesome": "~4.1.0",
+    "fontawesome": "~4.2.0",
     "q": "~1.0.1",
     "artTemplate": "git@github.com:aui/artTemplate.git",
     "holderjs": "~2.3.2",

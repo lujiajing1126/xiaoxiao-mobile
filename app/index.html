@@ -57,9 +57,12 @@
             <div class="mainLayout">
                 <nav class="header">
                     <div class="container">
-                        <div class="chooseSchoolPart">
+                        <div class="viewPerson">
+                           <span class="fa fa-user fa-lg"></span>
+                        </div>
+                        <div class="showSchoolPart">
                             <span id="dLabel" class="chooseSchool dropdown-toggle" data-toggle="dropdown">
-                                选学校 <span class="caret"></span>
+                                当前: <a id="school"></a><span class="caret"></span>
                             </span>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                 <li><a href="#">Action</a></li>
@@ -68,9 +71,6 @@
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                             </ul>
-                        </div>
-                        <div class="showSchoolPart">
-                            <span class="nowSchool">当前: <a id="school"></a></span>
                         </div>
                         <div class="userActionPart">
                             <span class="userName"></span>
@@ -87,7 +87,9 @@
                                 <div class="eventName">{{event.event.name}}</div>
                                 <div class="eventProvider">地点: {{event.event.location}}</div>
                                 <div class="likeit">
-                                    <span class="love"></span>
+                                    <span class="love">
+                                        <span class="fa fa-heart-o"></span>
+                                    </span>
                                     <span class="likenum">{{event.numberOfPraisers}}</span>
                                 </div>
                             </div>
@@ -95,50 +97,7 @@
                         </div>
                         {{/each}}
                     </script>
-                    <div class="eventCard" style="background-image:url(images/1.jpg)">
-                        <div class="eventInfo">
-                            <div class="eventName">{{eventName}}</div>
-                            <div class="eventProvider">主办发: {{eventId}}</div>
-                            <div class="likeit">
-                                <span class="love"></span>
-                                <span class="likenum">99</span>
-                            </div>
-                        </div>
-                        <div class="opacityLayout"></div>
-                    </div>
-                    <div class="eventCard" style="background-image:url(images/2.jpg)">
-                        <div class="eventInfo">
-                            <div class="eventName">{{eventName}}</div>
-                            <div class="eventProvider">主办发: {{eventId}}</div>
-                            <div class="likeit">
-                                <span class="love"></span>
-                                <span class="likenum">99</span>
-                            </div>
-                        </div>
-                        <div class="opacityLayout"></div>
-                    </div>
-                    <div class="eventCard" style="background-image:url(images/3.jpg)">
-                        <div class="eventInfo">
-                            <div class="eventName">{{eventName}}</div>
-                            <div class="eventProvider">主办发: {{eventId}}</div>
-                            <div class="likeit">
-                                <span class="love"></span>
-                                <span class="likenum">99</span>
-                            </div>
-                        </div>
-                        <div class="opacityLayout"></div>
-                    </div>
-                    <div class="eventCard" style="background-image:url(images/4.jpg)">
-                        <div class="eventInfo">
-                            <div class="eventName">{{eventName}}</div>
-                            <div class="eventProvider">主办发: {{eventId}}</div>
-                            <div class="likeit">
-                                <span class="love"></span>
-                                <span class="likenum">99</span>
-                            </div>
-                        </div>
-                        <div class="opacityLayout"></div>
-                    </div>
+                    <h4>您暂时没有订阅的活动...请到App端填写个人信息订阅版块</h4>
                 </div>
             </div>
         </div>
