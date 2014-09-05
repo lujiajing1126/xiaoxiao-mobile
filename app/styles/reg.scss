@@ -5,6 +5,7 @@ div.loginImg {
 	background: transparent url(/images/login_bg@2x.png);
 	background-size: cover;
 	background-position: center;
+	position: relative;
 }
 
 body > .container {
@@ -29,5 +30,36 @@ input.form-control {
 	&:focus {
 		-webkit-box-shadow: none;
 		box-shadow: none;
+	}
+	&:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0px 1000px white inset;
+	}
+}
+
+.loginName {
+	button#sendCode {
+		display: none;
+		position: absolute;
+		top: 0px;
+		right: 10px;
+		background-color: #00D5FF;
+		border-color: #00D5FF;
+		-webkit-user-select: none;
+	}
+}
+#code-form-group {
+	display: none;
+}
+
+#goback {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	i {
+		color: #fff;
+		line-height: 60px;
 	}
 }

@@ -4,11 +4,11 @@ window.location.href = window.XXWEB.loginpage if userSession is null or window.X
 # Auth the status of session
 window.auth = auth = ->
 	Q $.ajax
-		url: window.XXWEB.namespace + 'account/id?session=' + userSession,
+		url: "#{window.XXWEB.namespace}account/id?session=#{userSession}",
 		dataType: 'json',
 	.then (data)->
 		window.location.href = window.XXWEB.loginpage if data.status isnt "OK"
 		try
 			localStorage.setItem "userId",data.userId
 		catch error
-			$.cookie "userId",data.userId, path: '/'
+			$.cookie 'userId',data.userId, path: '/'

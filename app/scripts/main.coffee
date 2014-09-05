@@ -6,20 +6,20 @@ $ ->
 		endY: null
 	userSession = null
 	userId = null
-	# 获取数据
-	try
-		userSession = localStorage.getItem 'userSession'
-		userId = localStorage.getItem 'userId'
-	catch err
-		userSession = $.cookie "userSession"
-		userId = $.cookie "userId"
-	finally
-		if !userSession?
-			userSession = $.cookie "userSession"
-		if !userId?
-			userId = $.cookie "userId"
 	window.auth()
 	.then ->
+		# 获取数据
+		try
+			userSession = localStorage.getItem 'userSession'
+			userId = localStorage.getItem 'userId'
+		catch err
+			userSession = $.cookie "userSession"
+			userId = $.cookie "userId"
+		finally
+			if !userSession?
+				userSession = $.cookie "userSession"
+			if !userId?
+				userId = $.cookie "userId"
 		Q $.ajax
 			url: "#{window.XXWEB.namespace}user/#{userId}/info?session=#{userSession}&fields=#{window.XXWEB.userInfoFields.join(',')}",
 			type: 'get',
@@ -51,6 +51,12 @@ $ ->
 		,2000
 	$(document).on "click","span.logout", ->
 		location.href = window.XXWEB.loginpage
+		try
+			localStorage.setItem 'userSession',null
+			localStorage.setItem 'userId',null
+		catch err
+			$.removeCookie "userSession"
+			$.removeCookie "userId"
 	# 重新計算背景圖片偏移量
 	reCalBackgroundPosition = ->
 		$("div.eventCard").each (k,v)->
@@ -103,3 +109,15 @@ $ ->
 		ongoingMove.beginY = null
 		ongoingMove.endX = 240
 		ongoingMove.endY = null
+	$(document).on 'touchstart','#generateQRcode',(evt)->
+		try
+			userSession = localStorage.getItem 'userSession'
+		catch err
+			userSession = $.cookie "userSession"
+		finally
+			if !userSession?
+				userSession = $.cookie "userSession"
+		$.ajax(url:'/api/account/get_qrcode_url',type:'post',dataType:'json',data:{session:userSession}).done (data)->
+			if data.status is 'OK'
+				$('img#qrcode').attr 'src',"http://qr.liantu.com/api.php?text=#{data.url}"
+				$('#myModal').modal()

@@ -29,17 +29,29 @@
 	</head>
 	<body>
 		<div class="loginImg">
+			<div id="goback">
+				<i class="fa fa-arrow-circle-o-left fa-2x"></i>
+			</div>
 		</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" autocomplete="off">
 						<div class="form-group">
 							<div class="col-xs-2 input-logo">
 								<span class="fa fa-user fa-lg"></span>
 							</div>
+							<div class="col-xs-10 loginName">
+								<input type="text" name="username" class="form-control" id="loginName" placeholder="Email Or Phone" autocomplete="off">
+								<button class="btn btn-primary" id="sendCode">发送验证码</button>
+							</div>
+						</div>
+						<div class="form-group" id="code-form-group">
+							<div class="col-xs-2 input-logo">
+								<span class="fa fa-lock fa-lg"></span>
+							</div>
 							<div class="col-xs-10">
-								<input type="email" class="form-control" id="loginName" placeholder="Email Or Phone">
+								<input type="number" name="verification_code" class="form-control" id="code" placeholder="Verification Code">
 							</div>
 						</div>
 						<div class="form-group">
@@ -47,22 +59,22 @@
 								<span class="fa fa-key fa-lg"></span>
 							</div>
 							<div class="col-xs-10">
-								<input type="password" class="form-control" id="password" placeholder="Password">
+								<input type="password" name="password" class="form-control" id="password" placeholder="Password">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-xs-2 input-logo">
-								<span class="fa fa-lock fa-lg"></span>
+								<span class="fa fa-check-square-o fa-lg"></span>
 							</div>
 							<div class="col-xs-10">
-								<input type="password_verification" class="form-control" id="password" placeholder="Password">
+								<input type="password" name="password_verification" class="form-control" id="password_verification" placeholder="Password Verification">
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		<div class="btn-line btn-line-color" id="area-login">
+		<div class="btn-line btn-line-color" id="area-reg">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-2">

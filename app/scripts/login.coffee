@@ -1,6 +1,7 @@
 $ ->
 	windowHeight = $(window).height()
 	ongoingTouches = {beginY:null,endY:null}
+	notice = Notice.getInstance()
 	$("body").height windowHeight
 	$(".thirdLoginFooter").css 'top',windowHeight-100
 	$(".functionFooter").css 'top',windowHeight-50
@@ -36,6 +37,24 @@ $ ->
 		, "slow"
 	$(document).on 'touchstart','#area-login', (evt)->
 		evt.preventDefault()
+		username = $('#loginName').val()
+		password = $('input[name=password]').val()
+		console.log username
+		console.log password
+		if username.length is 0 or password.length > 12 or password.length < 3
+			notice.show text:'请检查您的用户名或密码'
+			return
+		dataForm = 
+			password: password
+		isPhoneNumber = window.XXWEB.phoneReg.test username
+		isEmail = window.XXWEB.emailReg.test username
+		if isPhoneNumber is true
+			dataForm['phone_number'] = username
+		else if isEmail is true
+			dataForm['email'] = username
+		else
+			notice.show text:'请输入邮箱地址或手机号'
+			return
 		$.ajax
 			url: window.XXWEB.namespace + 'session/create'
 			type: 'post'
@@ -48,9 +67,7 @@ $ ->
 					type: 'post',
 					dataType: 'json',
 					data:
-						session: data.session,
-						phone_number: $('#loginName').val(),
-						password: $('#password').val()
+						$.extend(dataForm,session: data.session)
 				.done (data)->
 					if data.status is "OK"
 						try
@@ -60,8 +77,10 @@ $ ->
 						finally
 							location.href = window.XXWEB.homepage
 					else if data.status is "Error"
-						notice = Notice.getInstance()
 						notice.show text:data.message
 	$(document).on 'click','#area-login', (evt) ->
 		evt.preventDefault()
 		alert "请到手机端使用"
+	$(document).on 'touchstart','.regButton',(evt)->
+		evt.preventDefault()
+		window.location.href = '/reg.html'
