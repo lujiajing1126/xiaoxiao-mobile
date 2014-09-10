@@ -213,7 +213,7 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the HTML file
         bowerInstall: {
             app: {
-                src: ['<%= config.app %>/index.html'],
+                src: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html'],
                 exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
             },
             sass: {
@@ -243,7 +243,7 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: '<%= config.app %>/index.html'
+            html: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html']
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
@@ -343,9 +343,15 @@ module.exports = function (grunt) {
                 }, {
                     expand: true,
                     dot: true,
-                    cwd: '.',
-                    src: ['bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*.*'],
-                    dest: '<%= config.dist %>'
+                    cwd: 'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap',
+                    src: ['*.*'],
+                    dest: '<%= config.dist %>/fonts'
+                },{
+                    expand: true,
+                    dot: true,
+                    cwd: 'bower_components/fontawesome/fonts',
+                    src: ['*.*'],
+                    dest: '<%= config.dist %>/fonts'
                 }]
             },
             styles: {

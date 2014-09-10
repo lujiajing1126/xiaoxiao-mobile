@@ -1,8 +1,8 @@
 XXWEB = window.XXWEB = 
 	namespace: '/api/'
-	homepage: '/index.html'
-	loginpage: '/login.html'
-	regpage: '/reg.html'
+	homepage: './index.html'
+	loginpage: './login.html'
+	regpage: './reg.html'
 XXWEB.emailReg = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 XXWEB.phoneReg = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/
 

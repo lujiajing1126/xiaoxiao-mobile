@@ -12,3 +12,4 @@ window.auth = auth = ->
 			localStorage.setItem "userId",data.userId
 		catch error
 			$.cookie 'userId',data.userId, path: '/'
+	, -> window.location.href = './login.html'
