@@ -83,4 +83,4 @@ $ ->
 		alert "请到手机端使用"
 	$(document).on 'touchstart','.regButton',(evt)->
 		evt.preventDefault()
-		window.location.href = '/reg.html'
+		window.location.href = './reg.html'
