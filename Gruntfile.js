@@ -360,6 +360,13 @@ module.exports = function (grunt) {
                 cwd: '<%= config.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            background: {
+                expand: true,
+                dot: true,
+                cwd: 'app/images',
+                src: ['background.jpg'],
+                dest: '<%= config.dist %>/images'
             }
         },
 
@@ -448,7 +455,8 @@ module.exports = function (grunt) {
         'modernizr',
         'rev',
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'copy:background'
     ]);
 
     grunt.registerTask('default', [
