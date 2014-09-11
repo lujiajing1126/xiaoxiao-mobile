@@ -35,7 +35,7 @@
             <div class="userPanel">
                 <div class="userContainer">
                     <div class="userAvatar">
-                        <a href="#"><img class="img-circle" src="holder.js/70x70/gray" alt="avatar"></a>
+                        <a href="#"><img class="img-circle" src="images/avatar.png" alt="avatar"></a>
                     </div>
                     <div class="userName">
                         <span></span>
@@ -44,11 +44,15 @@
                         <ul class="option-menu">
                             <li class="option">
                                 <span class="fa fa-cog fa-lg"></span>
-                                个人设置
+                                个人信息
                             </li>
                             <li class="option" id="generateQRcode">
                                 <span class="fa fa-smile-o fa-lg"></span>
                                 生成个人二维码
+                            </li>
+                            <li class="option">
+                                <span class="fa fa-group fa-lg"></span>
+                                <a href="./apply.html">报名参加社团</a>
                             </li>
                         </ul>
                     </div>
@@ -58,22 +62,15 @@
                 <nav class="header">
                     <div class="container">
                         <div class="viewPerson">
-                           <span class="fa fa-user fa-lg"></span>
+                           <img class="img-circle" src="images/avatar.png" alt="avatar">
+                           <span class="spot spot-red"></span>
                         </div>
                         <div class="showSchoolPart">
                             <span id="dLabel" class="chooseSchool dropdown-toggle" data-toggle="dropdown">
                                 当前: <a id="school"></a><span class="caret"></span>
                             </span>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
                         </div>
                         <div class="userActionPart">
-                            <span class="userName"></span>
                             <span class="logout">退出</span>
                         </div>
                     </div>
@@ -82,7 +79,7 @@
                 <div class="container" id="eventCardBoard">
                     <script type="text/html" id="eventCard">
                         {{each events as event i}}
-                        <div class="eventCard" style="background-image:url(images/1.jpg)">
+                        <div class="eventCard" style="background-image:url(/api/event/{{event.event.id}}/poster/load)">
                             <div class="eventInfo">
                                 <div class="eventName">{{event.event.name}}</div>
                                 <div class="eventProvider">地点: {{event.event.location}}</div>
@@ -150,5 +147,5 @@
         <script src="scripts/modules/auth.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
-</body>
+    </body>
 </html>

@@ -5,7 +5,7 @@ $ ->
 	.then ->
 		userId = localStorage.getItem "userId"
 		Q $.ajax
-			url: "#{namespace}user/#{userId}/info?session=#{userSession}&fields=" + window.XXWEB.userInfoFields.join(','),
+			url: "#{namespace}user/#{userId}/info?session=#{userSession}&fields=#{window.XXWEB.userInfoFields.join(',')}",
 			type: 'get',
 			dataType: 'json'
 	.then (data)->
