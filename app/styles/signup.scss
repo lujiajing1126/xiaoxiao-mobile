@@ -1,0 +1,11 @@
+.btn {
+	&.on {
+		display: block;
+	}
+	&.off {
+		display: none;
+	}
+}
+#btn_auth_code{
+	margin-top:5px;
+}
