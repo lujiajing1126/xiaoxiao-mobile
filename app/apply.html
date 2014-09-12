@@ -35,28 +35,24 @@
         </div>
 		<div class="wrap">
             <div class="mainLayout">
-                <div class="container" id="eventCardBoard">
-                    <script type="text/html" id="orgList">
-                        {{each organizations as organization i}}
-                        <div class="eventCard" style="background-image:url(/api/event/{{organization.id}}/poster/load)">
-                            <div class="eventInfo">
-                                <div class="eventName">{{organization.name}}</div>
-                                <div class="eventProvider">地点: {{organization.location}}</div>
-                                <div class="likeit">
-                                    <span class="love">
-                                        <span class="fa fa-heart-o"></span>
-                                    </span>
-                                    <span class="likenum">{{organization.numberOfPraisers}}</span>
-                                </div>
-                            </div>
-                            <div class="opacityLayout"></div>
-                        </div>
-                        {{/each}}
-                    </script>
-                    <h4>您暂时没有填写学校信息...请填写个人信息</h4>
+                <div class="box-wrapper">
+                    <div class="list-wrapper">
+                        <ul class="list-wrapper-list">
+                            <h4>您暂时没有填写学校信息...请填写个人信息</h4>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <script type="text/html" id="orgList">
+            {{each organizations as organization i}}
+            <li class="list-wrapper-item">
+                <span class="logo" style="background-image:url(/api/org/{{organization.id}}/logo);"></span>
+                <span class="title">{{organization.name}}</span>
+                <button class="apply" data-orgId="{{organization.id}}">申请加入</button>
+            </li>
+            {{/each}}
+        </script>
 		<!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
