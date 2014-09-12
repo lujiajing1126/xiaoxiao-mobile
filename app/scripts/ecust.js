@@ -22,7 +22,13 @@
 						if (data.status == "OK") {
 							$("#btn_auth_code").attr("disabled", "disabled").text("验证码已经在路上啦！！！");
 						} else if (data.status == "Error") {
-							errorHandler(data.message);
+							if (data.message == "手机号已被占用") {
+								alert("同学，你之前已经填写过个人信息了，请直接用您的手机号码登陆报名系统吧！");
+								window.location.href = "/login.html";
+								return;
+							} else {
+								alert(data.message);
+							}
 						}
 					},
 					error: function(error) {
@@ -157,7 +163,7 @@
 				} else if (data.status == "Error") {
 					if (data.message == "登录名已被占用") {
 						alert("同学，你之前已经填写过个人信息了，请直接用您的手机号码登陆报名系统吧！");
-						//window.location.href = "/login.html";
+						window.location.href = "/login.html";
 					} else {
 						alert(data.message);
 					}
@@ -205,7 +211,7 @@
 	}
 	//登陆之后修改个人信息
 	function update(userId, data, session) {
-		console.log( JSON.stringify(data));
+		console.log(JSON.stringify(data));
 		$.ajax({
 			url: window.XXWEB.namespace + 'user/' + userId + '/update',
 			type: 'post',
@@ -217,7 +223,7 @@
 			success: function(data) {
 				if (data.status == "OK") {
 					alert("信息提交成功，快去申请加入你感兴趣的组织吧。");
-					window.location.href="/apply.html";
+					window.location.href = "/apply.html";
 				}
 			},
 			error: function(error) {
