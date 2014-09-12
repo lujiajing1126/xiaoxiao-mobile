@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="mobile-web-app-capable" content="yes"> 
-		<title>社团报名系统</title>
+		<title>报名成功</title>
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
@@ -20,25 +20,26 @@
         <!-- build:css(.tmp) styles/base.css -->
         <link rel="stylesheet" href="styles/base.css">
         <!-- endbuild -->
-        <!-- build:css(.tmp) styles/signup_ecust.css -->
-        <link rel="stylesheet" href="styles/signup_base.css">
-        <link rel="stylesheet" href="styles/signup_ecust.css">
+        <!-- build:css(.tmp) styles/result.css -->
+        <link rel="stylesheet" href="styles/result.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="../bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
 	</head>
 	<body>
-		<div id="logo">
-            <span>华东理工大学社团联合会</span>
-            <img src="images/ecust.png" id="ecust" />
-            <img id="baituandazhan" src="images/baituandazhan.png" />
-        </div>
-        <div class="use-button">
-            <a href="./ecust.html"><img class="use" src="images/first_use.png" id="first" /></a>
-            <a href="./login.html"><img class="use" src="images/use_again.png" id="again" /></a>
+		<div class="result">
+            <img src="images/check.png" id="" />
+            <h4>恭喜你报名成功并成为校校用户</h4>
+            <h5>快下载校校查看报名结果吧!</h5>
+            <ul class="account">
+                <li id="userid"></li>
+                <li id="password"></li>
+            </ul>
         </div>
         <div class="footer">
+            <img src="images/" id="xiaoxiao" />
+            <button>立即下载</button>
         </div>
 		<!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -64,10 +65,10 @@
         <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
         <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/signup_ecust.js -->
+        <!-- build:js({app,.tmp}) scripts/result.js -->
         <script src="scripts/libs/notice.js"></script>
         <script src="scripts/app.js"></script>
-        <script src="scripts/signup_ecust.js"></script>
+        <script src="scripts/result.js"></script>
         <!-- endbuild -->
 	</body>
 </html>

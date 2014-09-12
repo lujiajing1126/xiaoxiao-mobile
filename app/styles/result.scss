@@ -1,0 +1,48 @@
+html,body {
+	height: auto;
+	overflow: hidden;
+}
+.result {
+	padding-top: 50px;
+	text-align: center;
+	img {
+		display: block;
+		width: 40%;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+	ul.account {
+		margin-bottom: 0;
+		padding-left: 0;
+		list-style-type: none;
+		li {
+			display: inline-block;
+		}
+	}
+}
+.footer {
+	height: 350px;
+	background: transparent url('../images/ph-bg.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	text-align: center;
+	button {
+		position: relative;
+		top: 100px;
+		left: 0;
+		margin: 0 auto;
+		height: 50px;
+		width: 40%;
+		border: 1.5px solid #fff;
+		background-color: rgba(255,255,255,0.25);
+		border-radius: 15px;
+		color: #fff;
+		outline: none;
+		font-size: 20px;
+	}
+}
+img,a,button {
+	-webkit-user-select: none;
+}
