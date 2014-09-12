@@ -22,77 +22,6 @@ span.spot {
 		background-color: red;
 	}
 }
-nav.header {
-	div.container {
-		height: 100%;
-		margin-left: 0px;
-		margin-right: 0px;
-		padding-left: 0px;
-		padding-right: 0px;
-		> div {
-			display: block;
-			height: 50px;
-		}
-		border-bottom: 1px solid #CCC;
-		box-shadow: outset 0 5px 2px;
-	}
-	width: 100%;
-	height: 50px;
-	background-color: #fff;
-	div.viewPerson {
-		position: relative;
-		float: left;
-		width: 15%;
-		min-width: 45px;
-		img {
-			width: 35px;
-			display: block;
-			margin-left: 7.5px;
-			margin-top: 7.5px;
-		}
-		span {
-			position: absolute;
-			top: 9px;
-			left: 35px;
-		}
-	}
-	div.showSchoolPart {
-		float: left;
-		width: 70%;
-		text-align: center;
-		span.chooseSchool {
-			margin-top: 14px;
-			margin-bottom: 0px;
-			display: block;
-			color: #CCC;
-			font-size: 12px;
-			a {
-				text-decoration: none;
-				font-size: 16px;
-				-webkit-user-select: none;
-			}
-		}
-	}
-	div.userActionPart {
-		width: 15%;
-		float: right;
-		color: #808080;
-		span {
-			margin-top: 15px;
-			display: inline-block;
-			width: 100%;
-			text-align: center;
-			&.userName {
-				width: 45%;
-				padding-right: 5px;
-				border-right: 1px solid #CCCCCC;
-			}
-			&.logout {
-				padding-left: 5px;
-			}
-		}
-	}
-}
 .mainLayout {
 	position: relative;
 	top: 0px;
@@ -105,91 +34,58 @@ nav.header {
 	> .container {
 		margin: 0;
 		padding: 0;
-		.eventCard {
-			width: 100%;
-			height: 220px;
-			background-color: transparent;
-			background-size: 100% 130%;
-			background-position: center;
-			background-repeat: no-repeat;
+	}
+}
+.list-wrapper {
+	ul.list-wrapper-list {
+		padding-left: 0;
+		list-style-type: none;
+		li.list-wrapper-item {
+			padding-left: 15px;
+			height: 80px;
+			display: block;
+			border-bottom: 1px solid #DADADA;
 			position: relative;
-			> .opacityLayout {
-				width: 100%;
-				height: 60px;
-				background-color: #fff;
-				position: absolute;
-				bottom: 0px;
-				left: 0px;
-				opacity: 0.7;
-				z-index: 5;
+			span.title {
+				float: left;
+				display: inline-block;
+				line-height: 80px;
+				font-size: 18px;
+				margin-left: 15px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 43%;
 			}
-			> .eventInfo {
-				width: 100%;
-				height: 60px;
-				background-color: transparent;
+			button {
 				position: absolute;
-				bottom: 0px;
-				left: 0px;
-				z-index: 6;
-				color: #000;
-				div.eventName {
-					padding-left: 20%;
-					position: absolute;
-					width: 80%;
-					height: 60%;
-					top: 0px;
-					left: 0px;
-					font-size: 16px;
-					overflow: hidden;
-					text-align: center;
-					white-space: nowrap;
-					text-overflow: ellipsis;
-				}
-				div.eventProvider {
-					padding-left: 20%;
-					position: absolute;
-					width: 80%;
-					height: 40%;
-					top: 60%;
-					left: 0;
-					color: #808080;
-					overflow: hidden;
-					text-align: center;
-					white-space: nowrap;
-					text-overflow: ellipsis;
-				}
-				div.likeit {
-					position: absolute;
-					right: 0px;
-					top: 0px;
-					width: 20%;
-					height: 100%;
-					span {
-						display: block;
-						height: 100%;
-						&.love {
-							position: absolute;
-							top: 0px;
-							left: 0px;
-							width: 50%;
-							span {
-								line-height: 60px;
-								font-size: 24px;
-								color: red;
-							}
-						}
-						&.likenum {
-							position: absolute;
-							top: 0px;
-							right: 0px;
-							width: 50%;
-							line-height: 60px;
-							font-size: 20px;
-							padding-left: 6px;
-						}
-					}
-				}
+				top: 20px;
+				right: 15px;
+				background-color: #00D7FF;
+				border: 0;
+				outline: none;
+				width: 80px;
+				height: 40px;
+				color: #fff;
+				border-radius: 10px;
+				font-size: 13px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				z-index: 99;
 			}
 		}
+		margin-bottom: 0px;
 	}
+}
+span.logo {
+	border-radius: 10px;
+	display: inline-block;
+	margin-top: 10px;
+	height: 60px;
+	width: 60px;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	float: left;	
 }

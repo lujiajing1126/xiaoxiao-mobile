@@ -3,13 +3,14 @@ html,body {
 	overflow: hidden;
 }
 .result {
-	padding-top: 50px;
+	padding-top: 35px;
 	text-align: center;
+	padding-bottom: 23px;
 	img {
 		display: block;
-		width: 40%;
+		width: 30%;
 		margin: 0 auto;
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 	}
 	ul.account {
 		margin-bottom: 0;
@@ -17,20 +18,39 @@ html,body {
 		list-style-type: none;
 		li {
 			display: inline-block;
+			font-size: 16px;
+			font-family: Helvetica, Tahoma, Arial, 'Microsoft YaHei', 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+			&#userid {
+				color: #00D7FF;
+			}
+			&#password {
+				color: #FF001D;
+			}
 		}
+	}
+	h4,h5 {
+		font-family: Helvetica, Tahoma, Arial, 'Microsoft YaHei', 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
 	}
 }
 .footer {
-	height: 350px;
+	height: 300px;
 	background: transparent url('../images/ph-bg.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	position: relative;
 	text-align: center;
+	padding-top: 20px;
+	img#xiaoxiao {
+		display: block;
+		position: relative;
+		top: 10px;
+		margin: 0 auto;
+		width: 125px;
+	}
 	button {
 		position: relative;
-		top: 100px;
+		top: 20px;
 		left: 0;
 		margin: 0 auto;
 		height: 50px;

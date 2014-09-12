@@ -1,6 +1,17 @@
 $ ->
 	userSession = null
 	userId = null
+	notice = Notice.getInstance()
+	searchStr = window.location.search
+	searchParamsStr = searchStr.slice(1) if searchStr isnt ""
+	searchParamsArr = searchParamsStr.split('&') if searchStr isnt "" and searchParamsStr isnt ""
+	if searchParamsArr && searchParamsArr.length > 0
+		searchParamsArr = searchParamsArr.map (v)->
+			key = v.split('=')[0]
+			value = v.split('=')[1]
+			return {name:key,value:value}
+	flag =  false
+	flag = true if param is 'first' for param in searchParamsArr if searchParamsArr?
 	window.auth()
 		.then ->
 			# 获取数据
@@ -31,7 +42,7 @@ $ ->
 				dataType: 'json'
 		.then (data)->
 			html = template 'orgList',{organizations: data.organizations}
-			$('#eventCardBoard').html html
+			$('ul.list-wrapper-list').html html
 		.done ->
 			setTimeout ->
 				# 设置主层级的高度并显示
@@ -40,3 +51,21 @@ $ ->
 				$("#appLoadingIndicator").hide()
 				$("html,body").css "background-color","transparent"
 			,2000
+	$(document).on 'click', '.apply', ->
+		orgId = $(this).attr 'data-orgId'
+		if !$(this).hasClass 'disabled'
+			Q $.ajax 
+				url: "/api/org/#{orgId}/jreq/send"
+				data: 
+					session: userSession
+				dataType: 'json'
+				type: 'post'
+			.then (data)=>
+				if data.status is 'OK'
+					if flag is true
+						window.location.href = './result.html'
+					else
+						$(this).html '待审核...'
+						$(this).addClass 'disabled'
+				else
+					notice.show text:'申请失败'
