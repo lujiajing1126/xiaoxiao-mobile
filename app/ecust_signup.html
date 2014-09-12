@@ -20,21 +20,26 @@
         <!-- build:css(.tmp) styles/base.css -->
         <link rel="stylesheet" href="styles/base.css">
         <!-- endbuild -->
-        <!-- build:css(.tmp) styles/reg.css -->
-        <link rel="stylesheet" href="styles/reg.css">
+        <!-- build:css(.tmp) styles/signup_ecust.css -->
+        <link rel="stylesheet" href="styles/signup_base.css">
+        <link rel="stylesheet" href="styles/signup_ecust.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="../bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
 	</head>
 	<body>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					
-				</div>
-			</div>
-		</div>
+		<div id="logo">
+            <span>华东理工大学社团联合会</span>
+            <img src="images/ecust.png" id="ecust" />
+            <img id="baituandazhan" src="images/baituandazhan.png" />
+        </div>
+        <div class="use-button">
+            <img class="use" src="images/first_use.png" id="first" />
+            <img class="use" src="images/use_again.png" id="again" />
+        </div>
+        <div class="footer">
+        </div>
 		<!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -59,10 +64,10 @@
         <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
         <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/signup.js -->
+        <!-- build:js({app,.tmp}) scripts/signup_ecust.js -->
         <script src="scripts/libs/notice.js"></script>
         <script src="scripts/app.js"></script>
-        <script src="scripts/signup.js"></script>
+        <script src="scripts/signup_ecust.js"></script>
         <!-- endbuild -->
 	</body>
 </html>

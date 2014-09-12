@@ -1,0 +1,53 @@
+#logo {
+	height: 200px;
+	width: 100%;
+	background-image: url(../images/man.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	position: relative;
+	span {
+		margin: 0 auto;
+		width: 100%;
+		text-align: center;
+		font-size: 16px;
+		color: #fff;
+		line-height: 350px;
+		font-family: Helvetica, Tahoma, Arial, 'Microsoft YaHei', 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+	}
+	img#ecust {
+		width: 80px;
+		position: absolute;
+		top: 170px;
+		left: 15px;
+	}
+	img#baituandazhan {
+		width: 150px;
+		position: absolute;
+		top: 215px;
+		left: 110px;
+	}
+}
+.use-button {
+	background-color: #E9F5F7;
+	width: 100%;
+	padding-top: 35px; 
+	text-align: center;
+	padding-bottom: 30px;
+	img.use {
+		width: 50%;
+		margin: 0 auto;
+		margin-top: 30px;
+	}
+}
+.footer {
+	width: 100%;
+	background: transparent url('../images/xiaoxiao_baoming.png');
+	background-size: 70%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-origin: content;
+	height: 60px;
+	padding: 15px;
+}

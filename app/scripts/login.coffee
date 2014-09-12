@@ -78,9 +78,6 @@ $ ->
 							location.href = window.XXWEB.homepage
 					else if data.status is "Error"
 						notice.show text:data.message
-	$(document).on 'click','#area-login', (evt) ->
-		evt.preventDefault()
-		alert "请到手机端使用"
 	$(document).on 'touchstart','.regButton',(evt)->
 		evt.preventDefault()
 		window.location.href = './reg.html'
