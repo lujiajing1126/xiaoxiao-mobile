@@ -66,7 +66,7 @@
 	$(document).on("keyup", "#phoneNumber", function(event) {
 		showAuthButton(this);
 	});
-	$(document).on("click", "[data-xx-action]", function(event) {
+	$(document).on("touchend click", "[data-xx-action]", function(event) {
 		var actionName = $(this).attr("data-xx-action"),
 			action = actions[actionName];
 		action && $.isFunction(action) && action.call($(this), event);
@@ -133,7 +133,7 @@
 		$input.parents(".form-group").addClass("has-error").attr("placeholder", tips).val("");
 		setTimeout(function() {
 			$("#msg_tips").removeClass("on");
-			$input.parent(".form-group").removeClass("has-error");
+			$input.parents(".form-group").removeClass("has-error");
 		}, 3000);
 	}
 
