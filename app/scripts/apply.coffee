@@ -12,7 +12,6 @@ $ ->
 			return {name:key,value:value}
 	flag =  false
 	flag = true if param is 'first' for param in searchParamsArr if searchParamsArr?
-	console.log flag
 	window.auth()
 		.then ->
 			# 获取数据
@@ -70,4 +69,3 @@ $ ->
 						$(this).addClass 'disabled'
 				else
 					notice.show text:'申请失败'
-
