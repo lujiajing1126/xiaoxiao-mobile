@@ -11,8 +11,8 @@ $ ->
 			value = v.split('=')[1]
 			return {name:key,value:value}
 	flag =  false
-	flag = true if param is 'first' for param in searchParamsArr if searchParamsArr?
-	
+	flag = true if param.name is 'first' for param in searchParamsArr if searchParamsArr?
+	console.log flag
 	window.auth()
 		.then ->
 			# 获取数据

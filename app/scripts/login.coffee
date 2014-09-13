@@ -5,6 +5,17 @@ $ ->
 	$("body").height windowHeight
 	$(".thirdLoginFooter").css 'top',windowHeight-100
 	$(".functionFooter").css 'top',windowHeight-50
+	searchStr = window.location.search
+	searchParamsStr = searchStr.slice(1) if searchStr isnt ""
+	searchParamsArr = searchParamsStr.split('&') if searchStr isnt "" and searchParamsStr isnt ""
+	if searchParamsArr && searchParamsArr.length > 0
+		searchParamsArr = searchParamsArr.map (v)->
+			key = v.split('=')[0]
+			value = v.split('=')[1]
+			return {name:key,value:value}
+	redirectTo =  'index.html'
+	flag = param.value if param.name is 'first' for param in searchParamsArr if searchParamsArr?
+	console.log flag
 	reCalAnimation = ->
 		begin = ongoingTouches.beginY || 0
 		end = ongoingTouches.endY || 0
@@ -75,7 +86,7 @@ $ ->
 						catch error
 							$.cookie "userSession",_session, path: '/'
 						finally
-							location.href = window.XXWEB.homepage
+							location.href = "./#{flag}"
 					else if data.status is "Error"
 						notice.show text:data.message
 	$(document).on 'touchstart','.regButton',(evt)->
