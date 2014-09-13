@@ -24,7 +24,7 @@
 						} else if (data.status == "Error") {
 							if (data.message == "手机号已被占用") {
 								alert("同学，你之前已经填写过个人信息了，请直接用您的手机号码登陆报名系统吧，如果你没有进行密码修改操作，你的密码可能会是你的手机号后6位哦！");
-								window.location.href = "./login.html";
+								window.location.href = "./login.html?continue=result.html";
 								return;
 							} else {
 								alert(data.message);
@@ -69,7 +69,7 @@
 		}
 	};
 	createSession();
-	$(document).on("keyup", "#phoneNumber", function(event) {
+	$(document).on("keyup change", "#phoneNumber", function(event) {
 		showAuthButton(this);
 	});
 	$(document).on("touchend click", "[data-xx-action]", function(event) {
@@ -163,7 +163,7 @@
 				} else if (data.status == "Error") {
 					if (data.message == "登录名已被占用") {
 						alert("同学，你之前已经填写过个人信息了，请直接用您的手机号码登陆报名系统吧，如果你没有进行密码修改操作，你的密码可能会是你的手机号后6位哦！");
-						window.location.href = "./login.html";
+						window.location.href = "./login.html?continue=result.html";
 					} else {
 						alert(data.message);
 					}

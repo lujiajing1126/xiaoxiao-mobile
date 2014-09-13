@@ -47,9 +47,9 @@
     <script type="text/html" id="orgList">
             {{each organizations as organization i}}
             <li class="list-wrapper-item">
-                <div class="logo" style="background-image:url(/api/org/{{organization.id}}/logo);"></div>
-                <div class="title">{{organization.name}}aaaaaaaaaaaaaa</div>
-                <div>
+                <div class="logo" style="background-image:url(/api/org/{{organization.id}}/logo),url(images/2.png);"></div>
+                <div class="title">{{organization.name}}</div>
+                <div class="button">
                 {{if organization.roleType=="none" && !organization.requestSatus}}
                 <button class="apply" data-orgId="{{organization.id}}">申请加入</button>
                 {{else if organization.roleType=="none" && organization.requestSatus}}
