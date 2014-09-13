@@ -3,7 +3,8 @@ XXWEB = window.XXWEB =
 	homepage: './index.html'
 	loginpage: './login.html'
 	regpage: './reg.html'
-XXWEB.emailReg = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	applypage: './apply.html'
+XXWEB.emailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
 XXWEB.phoneReg = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/
 
 XXWEB.uuidReg = /^[a-z0-9]{8}(\-[a-z0-9]{4}){3}-[a-z0-9]{12}$/

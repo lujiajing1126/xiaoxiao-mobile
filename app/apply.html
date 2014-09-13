@@ -1,87 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta name="mobile-web-app-capable" content="yes"> 
-		<title>社团列表</title>
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
-		<link rel="apple-touch-icon" size="72x72" href="/apple-touch-icon.png" />
-		<link rel="apple-touch-icon" size="114x114" href="/apple-touch-icon.png" />
-		<link rel="apple-touch-icon" size="144x144" href="/apple-touch-icon.png" />
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css styles/vendor.css -->
-        <!-- bower:css -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>社团列表</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" size="72x72" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" size="114x114" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" size="144x144" href="/apple-touch-icon.png" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
 
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:css(.tmp) styles/base.css -->
-        <link rel="stylesheet" href="styles/base.css">
-        <!-- endbuild -->
-        <!-- build:css(.tmp) styles/apply.css -->
-        <link rel="stylesheet" href="styles/apply.css">
-        <!-- endbuild -->
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="../bower_components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
-	</head>
-	<body>
-		<div id="appLoadingIndicator">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-		<div class="wrap">
-            <div class="mainLayout">
-                <div class="box-wrapper">
-                    <div class="list-wrapper">
-                        <ul class="list-wrapper-list">
-                            <h4>您暂时没有填写学校信息...请填写个人信息</h4>
-                        </ul>
-                    </div>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/base.css -->
+    <link rel="stylesheet" href="styles/base.css">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/apply.css -->
+    <link rel="stylesheet" href="styles/apply.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+</head>
+<body>
+    <div id="appLoadingIndicator">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wrap">
+        <div class="mainLayout">
+            <div class="box-wrapper">
+                <div class="list-wrapper">
+                    <ul class="list-wrapper-list">
+                        <h4>您暂时没有填写学校信息...请填写个人信息</h4>
+                    </ul>
                 </div>
             </div>
         </div>
-        <script type="text/html" id="orgList">
+    </div>
+    <script type="text/html" id="orgList">
             {{each organizations as organization i}}
             <li class="list-wrapper-item">
-                <span class="logo" style="background-image:url(/api/org/{{organization.id}}/logo);"></span>
-                <span class="title">{{organization.name}}</span>
+                <div class="logo" style="background-image:url(/api/org/{{organization.id}}/logo);"></div>
+                <div class="title">{{organization.name}}aaaaaaaaaaaaaa</div>
+                <div>
+                {{if organization.roleType=="none" && !organization.requestSatus}}
                 <button class="apply" data-orgId="{{organization.id}}">申请加入</button>
+                {{else if organization.roleType=="none" && organization.requestSatus}}
+                <button class="cancel" data-orgId="{{organization.id}}">审核中</button>
+                {{else if organization.roleType=="member:admin"}}
+                <button class="admin" data-orgId="{{organization.id}}">管理员</button>
+                {{else}}
+                <button class="quit" data-orgId="{{organization.id}}">退出组织</button>
+                {{/if}}
+             </div>  
             </li>
             {{/each}}
         </script>
-		<!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../bower_components/q/q.js"></script>
-        <script src="../bower_components/holderjs/holder.js"></script>
-        <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-        <script src="../bower_components/artTemplate/dist/template-debug.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
-         <!-- build:js scripts/plugins.js -->
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-        <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/q/q.js"></script>
+    <script src="../bower_components/holderjs/holder.js"></script>
+    <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="../bower_components/artTemplate/dist/template-debug.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js scripts/plugins.js -->
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/apply.js -->
-        <script src="scripts/libs/notice.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/modules/auth.js"></script>
-        <script src="scripts/apply.js"></script>
-        <!-- endbuild -->
-	</body>
+    <!-- build:js({app,.tmp}) scripts/apply.js -->
+    <script src="scripts/libs/notice.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/modules/auth.js"></script>
+    <script src="scripts/apply.js"></script>
+    <!-- endbuild -->
+</body>
 </html>

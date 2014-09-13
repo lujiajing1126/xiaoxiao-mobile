@@ -40,52 +40,83 @@ span.spot {
 	ul.list-wrapper-list {
 		padding-left: 0;
 		list-style-type: none;
+		// li.list-wrapper-item {
+		// 	padding-left: 5px;
+		// 	height: 80px;
+		// 	display: block;
+		// 	border-bottom: 1px solid #DADADA;
+		// 	position: relative;
+		// 	span.title {
+		// 		float: left;
+		// 		display: inline-block;
+		// 		line-height: 80px;
+		// 		font-size: 16px;
+		// 		margin-left: 5px;
+		// 		// overflow: hidden;
+		// 		// text-overflow: ellipsis;
+		// 		// white-space: nowrap;
+		// 		//width: 43%;
+		// 		// width: auto;
+		// 		// margin-left: 70px;
+		// 		// margin-right: 90px;
+		// 	}
+		// 	button {
+		// 		position: absolute;
+		// 		top: 20px;
+		// 		right: 5px;
+		// 		background-color: #00D7FF;
+		// 		border: 0;
+		// 		outline: none;
+		// 		width: 80px;
+		// 		height: 40px;
+		// 		color: #fff;
+		// 		border-radius: 10px;
+		// 		font-size: 13px;
+		// 		overflow: hidden;
+		// 		text-overflow: ellipsis;
+		// 		white-space: nowrap;
+		// 		z-index: 99;
+		// 		&.apply{
+		// 			background-color: #00D7FF;
+		// 		}
+		// 		&.cancel{
+		// 			background-color: #f45056;
+		// 		}
+		// 		&.quit{
+		// 			background-color: #c93636;
+		// 		}
+		// 		&.admin{
+		// 			background-color:#29b709;
+		// 		}
+		// 	}
+		// }
 		li.list-wrapper-item {
-			padding-left: 15px;
-			height: 80px;
-			display: block;
-			border-bottom: 1px solid #DADADA;
-			position: relative;
-			span.title {
-				float: left;
-				display: inline-block;
-				line-height: 80px;
-				font-size: 18px;
-				margin-left: 15px;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				width: 43%;
+			display: table;
+			width: 100%;
+			min-height: 60px;
+			div{
+				display: table-cell;
+				vertical-align: middle;
 			}
-			button {
-				position: absolute;
-				top: 20px;
-				right: 15px;
-				background-color: #00D7FF;
-				border: 0;
-				outline: none;
+			div.logo,button{
 				width: 80px;
-				height: 40px;
-				color: #fff;
-				border-radius: 10px;
-				font-size: 13px;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				z-index: 99;
+				text-align: center;
+			}
+			div.title{
+
 			}
 		}
 		margin-bottom: 0px;
 	}
 }
-span.logo {
-	border-radius: 10px;
-	display: inline-block;
-	margin-top: 10px;
-	height: 60px;
-	width: 60px;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	float: left;	
-}
+// span.logo {
+// 	border-radius: 10px;
+// 	display: inline-block;
+// 	margin-top: 10px;
+// 	height: 60px;
+// 	width: 60px;
+// 	background-position: center;
+// 	background-size: cover;
+// 	background-repeat: no-repeat;
+// 	float: left;	
+// }

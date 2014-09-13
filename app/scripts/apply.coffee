@@ -12,6 +12,7 @@ $ ->
 			return {name:key,value:value}
 	flag =  false
 	flag = true if param is 'first' for param in searchParamsArr if searchParamsArr?
+	
 	window.auth()
 		.then ->
 			# 获取数据
@@ -43,6 +44,7 @@ $ ->
 		.then (data)->
 			html = template 'orgList',{organizations: data.organizations}
 			$('ul.list-wrapper-list').html html
+			$(".list-wrapper-item .title").width $(window).width()-160
 		.done ->
 			setTimeout ->
 				# 设置主层级的高度并显示
@@ -54,6 +56,7 @@ $ ->
 	$(document).on 'click', '.apply', ->
 		orgId = $(this).attr 'data-orgId'
 		if !$(this).hasClass 'disabled'
+			$(this).addClass 'disabled'
 			Q $.ajax 
 				url: "/api/org/#{orgId}/jreq/send"
 				data: 
@@ -65,7 +68,55 @@ $ ->
 					if flag is true
 						window.location.href = './result.html'
 					else
-						$(this).html '待审核...'
-						$(this).addClass 'disabled'
+						$(this).html '审核中'
+						.removeClass 'apply'
+						.addClass 'cancel'
+						.removeClass 'disabled'
 				else
 					notice.show text:'申请失败'
+					$(this).removeClass 'disabled'
+
+	$(document).on 'click', '.cancel', ->
+		orgId = $(this).attr 'data-orgId'
+		if !$(this).hasClass 'disabled'
+			$(this).addClass 'disabled'
+			Q $.ajax 
+				url: "/api/org/#{orgId}/jreq/cancel"
+				data: 
+					session: userSession
+				dataType: 'json'
+				type: 'post'
+			.then (data)=>
+				if data.status is 'OK'
+					if flag is true
+						window.location.href = './result.html'
+					else
+						$(this).html '申请加入'
+						.removeClass 'cancel'
+						.addClass 'apply'
+						.removeClass 'disabled'
+				else
+					notice.show text:'操作失败'
+					$(this).removeClass 'disabled'
+	$(document).on 'click', '.quit', ->
+		orgId = $(this).attr 'data-orgId'
+		if !$(this).hasClass 'disabled'
+			$(this).addClass 'disabled'
+			Q $.ajax 
+				url: "/api/org/#{orgId}/quit"
+				data: 
+					session: userSession
+				dataType: 'json'
+				type: 'post'
+			.then (data)=>
+				if data.status is 'OK'
+					if flag is true
+						window.location.href = './result.html'
+					else
+						$(this).html '申请加入'
+						.removeClass 'quit'
+						.addClass 'apply'
+						.removeClass 'disabled'
+				else
+					notice.show text:'操作失败'
+					$(this).removeClass 'disabled'
