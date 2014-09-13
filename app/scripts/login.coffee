@@ -86,7 +86,7 @@ $ ->
 						catch error
 							$.cookie "userSession",_session, path: '/'
 						finally
-							location.href = "./#{flag}"
+							location.href = "./"+redirectTo#+"#{flag}"
 					else if data.status is "Error"
 						notice.show text:data.message
 	$(document).on 'touchstart','.regButton',(evt)->
