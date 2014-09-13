@@ -213,7 +213,7 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the HTML file
         bowerInstall: {
             app: {
-                src: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html'],
+                src: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html','<%= config.app %>/ecust_signup.html','<%= config.app %>/result.html','<%= config.app %>/apply.html','<%= config.app %>/ecust.html'],
                 exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
             },
             sass: {
@@ -243,7 +243,7 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html']
+            html: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html','<%= config.app %>/ecust_signup.html','<%= config.app %>/result.html','<%= config.app %>/apply.html','<%= config.app %>/ecust.html']
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration

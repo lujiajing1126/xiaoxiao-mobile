@@ -24,7 +24,7 @@
 						} else if (data.status == "Error") {
 							if (data.message == "手机号已被占用") {
 								alert("同学，你之前已经填写过个人信息了，请直接用您的手机号码登陆报名系统吧！");
-								window.location.href = "/login.html";
+								window.location.href = "./login.html";
 								return;
 							} else {
 								alert(data.message);
@@ -163,7 +163,7 @@
 				} else if (data.status == "Error") {
 					if (data.message == "登录名已被占用") {
 						alert("同学，你之前已经填写过个人信息了，请直接用您的手机号码登陆报名系统吧！");
-						window.location.href = "/login.html";
+						window.location.href = "./login.html";
 					} else {
 						alert(data.message);
 					}
@@ -223,7 +223,7 @@
 			success: function(data) {
 				if (data.status == "OK") {
 					alert("信息提交成功，快去申请加入你感兴趣的组织吧。");
-					window.location.href = "/apply.html";
+					window.location.href = "./apply.html?first=true";
 				}
 			},
 			error: function(error) {

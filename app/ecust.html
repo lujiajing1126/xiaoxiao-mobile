@@ -1,121 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="mobile-web-app-capable" content="yes">
-	<title>华东理工大学社团报名系统</title>
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
-	<link rel="apple-touch-icon" size="72x72" href="/apple-touch-icon.png" />
-	<link rel="apple-touch-icon" size="114x114" href="/apple-touch-icon.png" />
-	<link rel="apple-touch-icon" size="144x144" href="/apple-touch-icon.png" />
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<!-- build:css styles/vendor.css -->
-	<!-- bower:css -->
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="mobile-web-app-capable" content="yes">
+		<title>华东理工大学社团报名系统</title>
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" size="72x72" href="/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" size="114x114" href="/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" size="144x144" href="/apple-touch-icon.png" />
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<!-- build:css styles/vendor.css -->
+		<!-- bower:css -->
 
-	<!-- endbower -->
-	<!-- endbuild -->
-	<!-- build:css(.tmp) styles/base.css -->
-	<link rel="stylesheet" href="styles/base.css">
-	<!-- endbuild -->
-	<!-- build:css(.tmp) styles/login.css -->
-	<link rel="stylesheet" href="styles/ecust.css">
-	<!-- endbuild -->
-	<!-- build:js scripts/vendor/modernizr.js -->
-	<script src="../bower_components/modernizr/modernizr.js"></script>
-	<!-- endbuild -->
-</head>
-<body>
-	<div class="header">
-		<div class="header-inner-wrapper">
-			<span>华东理工大学社团招新</span>
+		<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:css(.tmp) styles/base.css -->
+		<link rel="stylesheet" href="styles/base.css">
+		<!-- endbuild -->
+		<!-- build:css(.tmp) styles/ecust.css -->
+		<link rel="stylesheet" href="styles/ecust.css">
+		<!-- endbuild -->
+		<!-- build:js scripts/vendor/modernizr.js -->
+		<script src="../bower_components/modernizr/modernizr.js"></script>
+		<!-- endbuild -->
+	</head>
+	<body>
+		<div class="header">
+			<div class="header-inner-wrapper">
+				<span>华东理工大学社团招新</span>
+			</div>
 		</div>
-	</div>
-	<form class="form">
-		<!-- <div class="form-group">
-		<label for="school" class="col-sm-2 control-label">学校</label>
-		<div class="col-sm-10">
-			<span class="form-control">华东理工大学</span>
-		</div>
-	</div>
-	-->
-	<div class="form-group">
-		<label for="phoneNumber" class="col-sm-2 control-label">手机号</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control xx-input" id="phoneNumber" placeholder="请填写你的手机号码" />
-			<span class="btn btn-success form-control off" id="btn_auth_code" data-xx-action="getAuthCode">获取验证码</span>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="authCode" class="col-sm-2 control-label">验证码</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="authCode" placeholder="请输入验证码" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="userName" class="col-sm-2 control-label">姓名</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control xx-input" id="userName" placeholder="请填写你的姓名" />
-		</div>
-	</div>
+		<form class="form">
+			<div class="form-group">
+				<label for="phoneNumber" class="col-sm-2 control-label">手机号</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control xx-input" id="phoneNumber" placeholder="请填写你的手机号码" />
+					<span class="btn btn-success form-control off" id="btn_auth_code" data-xx-action="getAuthCode">获取验证码</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="authCode" class="col-sm-2 control-label">验证码</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="authCode" placeholder="请输入验证码" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="userName" class="col-sm-2 control-label">姓名</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control xx-input" id="userName" placeholder="请填写你的姓名" />
+				</div>
+			</div>
 
-	<div class="form-group">
-		<label for="grade" class="col-sm-2 control-label">年级</label>
-		<div class="col-sm-10">
-			<select class="form-control" id="grade">
-				<option value="1">大一</option>
-				<option value="2">大二</option>
-				<option value="3">大三</option>
-				<option value="4">大四</option>
-				<option value="5">大五</option>
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="studentNumber" class="col-sm-2 control-label">学号</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control " id="studentNumber" placeholder="同学，你的学号是多少呢？" />
-		</div>
-	</div>
-	<div class="form-group col-sm-10" id="msg_tips">
-		<div class="alert alert-danger "></div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-10">
-			<button class="btn btn-success form-control" data-xx-action="signup">报名</button>
-		</div>
-	</div>
-</form>
-<!-- build:js scripts/vendor.js -->
-<!-- bower:js -->
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/q/q.js"></script>
-<script src="../bower_components/holderjs/holder.js"></script>
-<script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-<script src="../bower_components/artTemplate/dist/template-debug.js"></script>
-<script src="scripts/libs/notice.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
-<!-- build:js scripts/plugins.js -->
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-<!-- endbuild -->
+			<div class="form-group">
+				<label for="grade" class="col-sm-2 control-label">年级</label>
+				<div class="col-sm-10">
+					<select class="form-control" id="grade">
+						<option value="1">大一</option>
+						<option value="2">大二</option>
+						<option value="3">大三</option>
+						<option value="4">大四</option>
+						<option value="5">大五</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="studentNumber" class="col-sm-2 control-label">学号</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control " id="studentNumber" placeholder="同学，你的学号是多少呢？" />
+				</div>
+			</div>
+			<div class="form-group col-sm-10" id="msg_tips">
+				<div class="alert alert-danger "></div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					<button class="btn btn-success form-control" data-xx-action="signup">报名</button>
+				</div>
+			</div>
+		</form>
+		<!-- build:js scripts/vendor.js -->
+		<!-- bower:js -->
+		<script src="../bower_components/jquery/dist/jquery.js"></script>
+		<script src="../bower_components/q/q.js"></script>
+		<script src="../bower_components/holderjs/holder.js"></script>
+		<script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
+		<script src="../bower_components/artTemplate/dist/template-debug.js"></script>
+		<script src="scripts/libs/notice.js"></script>
+		<!-- endbower -->
+		<!-- endbuild -->
+		<!-- build:js scripts/plugins.js -->
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+		<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
+		<!-- endbuild -->
 
-<!-- build:js({app,.tmp}) scripts/login.js -->
-<script src="scripts/app.js"></script>
-<script src="scripts/ecust.js"></script>
-<!-- endbuild -->
-</body>
+		<!-- build:js({app,.tmp}) scripts/ecust.js -->
+		<script src="scripts/app.js"></script>
+		<script src="scripts/ecust.js"></script>
+		<!-- endbuild -->
+	</body>
 </html>
