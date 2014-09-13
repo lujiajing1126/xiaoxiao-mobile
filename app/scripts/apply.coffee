@@ -88,9 +88,6 @@ $ ->
 				type: 'post'
 			.then (data)=>
 				if data.status is 'OK'
-					if flag is true
-						window.location.href = './result.html'
-					else
 						$(this).html '申请加入'
 						.removeClass 'cancel'
 						.addClass 'apply'
@@ -110,9 +107,6 @@ $ ->
 				type: 'post'
 			.then (data)=>
 				if data.status is 'OK'
-					if flag is true
-						window.location.href = './result.html'
-					else
 						$(this).html '申请加入'
 						.removeClass 'quit'
 						.addClass 'apply'

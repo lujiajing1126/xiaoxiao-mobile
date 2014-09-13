@@ -48,7 +48,7 @@
             {{each organizations as organization i}}
             <li class="list-wrapper-item">
                 <div class="logo" style="background-image:url(/api/org/{{organization.id}}/logo),url(images/2.png);"></div>
-                <div class="title">{{organization.name}}</div>
+                <div class="title"><a href="http://xiaoxiao.la/organization.html?oid={{organization.id}}">{{organization.name}}</a></div>
                 <div class="button">
                 {{if organization.roleType=="none" && !organization.requestSatus}}
                 <button class="apply" data-orgId="{{organization.id}}">申请加入</button>

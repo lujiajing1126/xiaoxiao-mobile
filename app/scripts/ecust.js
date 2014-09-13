@@ -75,7 +75,7 @@
 	$(document).on("blur", "#phoneNumber", function(event) {
 		showAuthButton(this);
 	});
-	$(document).on("touchend click", "[data-xx-action]", function(event) {
+	$(document).on("touchend", "[data-xx-action]", function(event) {
 		var actionName = $(this).attr("data-xx-action"),
 			action = actions[actionName];
 		action && $.isFunction(action) && action.call($(this), event);
