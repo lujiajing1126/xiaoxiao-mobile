@@ -84,6 +84,11 @@
 			action = actions[actionName];
 		action && $.isFunction(action) && action.call($(this), event);
 	});
+	$(document).on("keyup",function(event){
+		if(event.keyCode==13){
+			event.preventDefault();
+		}
+	});
 
 	// 根据用户输入判断是否显示验证码发送按钮
 	var showAuthButton = function(obj) {

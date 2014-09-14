@@ -28,4 +28,4 @@ $ ->
 			phone_number = data.loginMethod.phoneNumbers[0]
 		.done ->
 			$('#userid').html "校校账号: #{phone_number}"
-			$('#password').html "初始密码: #{phone_number.substring(5,11)}"
+			$('#password').html "初始密码: #{phone_number.substring(5,11)}(手机号后6位)"

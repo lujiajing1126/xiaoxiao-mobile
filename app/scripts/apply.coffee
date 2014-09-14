@@ -45,7 +45,7 @@ $ ->
 		.then (data)->
 			html = template 'orgList',{organizations: data.organizations}
 			$('ul.list-wrapper-list').html html
-			$(".list-wrapper-item .title").width $(window).width()-190
+			#$(".list-wrapper-item .title").width $(window).width()-190
 			$("#page_title").html window.AppUser.school+"社团列表"
 		.done ->
 			setTimeout ->
@@ -102,7 +102,7 @@ $ ->
 		if !$(this).hasClass 'disabled'
 			$(this).addClass 'disabled'
 			Q $.ajax 
-				url: "/api/org/#{orgId}/quit"
+				url: "/api/org/#{orgId}/jreq/quit"
 				data: 
 					session: userSession
 				dataType: 'json'
