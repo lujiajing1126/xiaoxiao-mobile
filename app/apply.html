@@ -33,65 +33,124 @@
         <div></div>
         <div></div>
     </div>
+
     <div class="wrap">
-        <div class="mainLayout">
-            <div class="box-wrapper">
-                <div class="list-wrapper">
-                    <ul class="list-wrapper-list">
-                        <h4>您暂时没有填写学校信息...请填写个人信息</h4>
-                    </ul>
-                </div>
+        <div class="toolbar clearfix">
+            <!-- <a href="./index.html">
+            <div  class="back image-back"></div>
+        </a>
+        -->
+        <div class="inner-header">
+            <h2 id="page_title"></h2>
+        </div>
+    </div>
+    <div class="mainLayout">
+        <div class="box-wrapper">
+            <div class="list-wrapper">
+                <ul class="list-wrapper-list">
+                    <h4>您暂时没有填写学校信息...请填写个人信息</h4>
+                </ul>
             </div>
         </div>
     </div>
-    <script type="text/html" id="orgList">
+</div>
+<script type="text/html" id="orgList">
             {{each organizations as organization i}}
+            {{if organization.id}}
             <li class="list-wrapper-item">
-                <div class="logo" style="background-image:url(/api/org/{{organization.id}}/logo),url(images/2.png);"></div>
-                <div class="title"><a href="http://xiaoxiao.la/organization.html?oid={{organization.id}}">{{organization.name}}</a></div>
-                <div class="button">
-                {{if organization.roleType=="none" && !organization.requestSatus}}
-                <button class="apply" data-orgId="{{organization.id}}">申请加入</button>
-                {{else if organization.roleType=="none" && organization.requestSatus}}
-                <button class="cancel" data-orgId="{{organization.id}}">审核中</button>
-                {{else if organization.roleType=="member:admin"}}
-                <button class="admin" data-orgId="{{organization.id}}">管理员</button>
+                <div class="item">
+                    <div>{{i+1}} .</div></div> 
+                <div class="logo" >
+                    <div class="inner-logo" style="background-image:url(/api/org/{{organization.id}}/logo),url(images/2.png);"></div>
+                </div>
+                {{if organization.id}}
+                <a href="http://xiaoxiao.la/organization.html?oid={{organization.id}}">
+                <div class="title">{{organization.name}}</div>
+                </a>
                 {{else}}
-                <button class="quit" data-orgId="{{organization.id}}">退出组织</button>
+                <div class="title" onclick="javascript:alert('该社团暂未入驻，不支持在线报名！');">{{organization.name}}</div>
                 {{/if}}
+                <div class="button">
+                {{if organization.id}}
+                    {{if organization.roleType=="none" && !organization.requestSatus}}
+                    <button class="apply" data-orgId="{{organization.id}}">申请加入</button>
+                    {{else if organization.roleType=="none" && organization.requestSatus}}
+                    <button class="cancel" data-orgId="{{organization.id}}">审核中</button>
+                    {{else if organization.roleType=="member:admin"}}
+                    <button class="admin" data-orgId="{{organization.id}}">管理员</button>
+                    {{else}}
+                    <button class="quit" data-orgId="{{organization.id}}">退出组织</button>
+                    {{/if}}
+                {{else}}
+                    <button class="bitch" onclick="javascript:alert('该社团暂未入驻，不支持在线报名！');">未入驻</button>
+                {{/if }}
              </div>  
             </li>
+            {{/if}}
+            {{/each}}
+             {{each organizations as organization i}}
+            {{if !organization.id}}
+            <li class="list-wrapper-item">
+                <div class="item">
+                    <div>{{i+1}} .</div></div> 
+                <div class="logo" >
+                    <div class="inner-logo" style="background-image:url(/api/org/{{organization.id}}/logo),url(images/2.png);"></div>
+                </div>
+                {{if organization.id}}
+                <a href="http://xiaoxiao.la/organization.html?oid={{organization.id}}">
+                <div class="title">{{organization.name}}</div>
+                </a>
+                {{else}}
+                <div class="title" onclick="javascript:alert('该社团暂未入驻，不支持在线报名！');">{{organization.name}}</div>
+                {{/if}}
+                <div class="button">
+                {{if organization.id}}
+                    {{if organization.roleType=="none" && !organization.requestSatus}}
+                    <button class="apply" data-orgId="{{organization.id}}">申请加入</button>
+                    {{else if organization.roleType=="none" && organization.requestSatus}}
+                    <button class="cancel" data-orgId="{{organization.id}}">审核中</button>
+                    {{else if organization.roleType=="member:admin"}}
+                    <button class="admin" data-orgId="{{organization.id}}">管理员</button>
+                    {{else}}
+                    <button class="quit" data-orgId="{{organization.id}}">退出组织</button>
+                    {{/if}}
+                {{else}}
+                    <button class="bitch" onclick="javascript:alert('该社团暂未入驻，不支持在线报名！');">未入驻</button>
+                {{/if }}
+             </div>  
+            </li>
+            {{/if}}
             {{/each}}
         </script>
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/q/q.js"></script>
-    <script src="../bower_components/holderjs/holder.js"></script>
-    <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-    <script src="../bower_components/artTemplate/dist/template-debug.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:js scripts/plugins.js -->
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/q/q.js"></script>
+<script src="../bower_components/holderjs/holder.js"></script>
+<script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
+<script src="../bower_components/artTemplate/dist/template-debug.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:js scripts/plugins.js -->
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
+<!-- endbuild -->
 
-    <!-- build:js({app,.tmp}) scripts/apply.js -->
-    <script src="scripts/libs/notice.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/modules/auth.js"></script>
-    <script src="scripts/apply.js"></script>
-    <!-- endbuild -->
+<!-- build:js({app,.tmp}) scripts/apply.js -->
+<script src="scripts/libs/notice.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/modules/auth.js"></script>
+<script src="scripts/apply.js"></script>
+<!-- endbuild -->
 </body>
 </html>

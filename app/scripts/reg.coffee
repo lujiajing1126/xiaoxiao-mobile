@@ -3,7 +3,7 @@ $ ->
 	notice = Notice.getInstance()
 	$('#loginName').keyup (evt)->
 		$sendCode = $('button#sendCode')
-		console.log $('input#loginName').val()
+		#console.log $('input#loginName').val()
 		isEmail = window.XXWEB.emailReg.test($('input#loginName').val())
 		isPhoneNumber = window.XXWEB.phoneReg.test($('input#loginName').val())
 		if isPhoneNumber is true
@@ -67,10 +67,15 @@ $ ->
 		code = $('input#code').val()
 		isPhoneNumber = window.XXWEB.phoneReg.test username
 		isEmail = window.XXWEB.emailReg.test username
-		if password isnt password_verification or password.length < 3 or password.length > 12 or code.length isnt 6
+
+		if isPhoneNumber and  (password isnt password_verification or password.length < 3 or password.length > 12 or code.length isnt 6)
 			notice.show text:'表单校验失败'
 			unlockButton $this
 			return
+		if isEmail and (password isnt password_verification or password.length < 3 or password.length > 12)
+			notice.show text:'表单校验失败'
+			unlockButton $this
+			
 		dataForm['password'] = password
 		if isPhoneNumber is true
 			dataForm['phone_number'] = username

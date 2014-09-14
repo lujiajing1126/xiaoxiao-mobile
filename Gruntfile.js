@@ -365,7 +365,7 @@ module.exports = function (grunt) {
                 expand: true,
                 dot: true,
                 cwd: 'app/images',
-                src: ['background.jpg'],
+                src: ['background.jpg','2.png'],
                 dest: '<%= config.dist %>/images'
             }
         },

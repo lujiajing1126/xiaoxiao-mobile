@@ -37,14 +37,16 @@ $ ->
 			$("div.userName > span").html data.userInfo.nickname
 			$("a#school").html data.studentInfo.school
 		.then (data)->
+			
 			Q $.ajax
-				url: "/api/assodir/#{window.AppUser.school}/load?session=#{userSession}"
+				url: "/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
 				type: 'get'
 				dataType: 'json'
 		.then (data)->
 			html = template 'orgList',{organizations: data.organizations}
 			$('ul.list-wrapper-list').html html
-			$(".list-wrapper-item .title").width $(window).width()-160
+			$(".list-wrapper-item .title").width $(window).width()-190
+			$("#page_title").html window.AppUser.school+"社团列表"
 		.done ->
 			setTimeout ->
 				# 设置主层级的高度并显示

@@ -1,3 +1,20 @@
+/* 清除浮动 */
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+    overflow:hidden;
+}
+.clearfix {
+    zoom:1; /* for ie6 & ie7 */
+}
+.image-back{
+	background-position:center;
+	background-size:cover;
+	background-repeat:no-repeat;
+}
 html,body {
 	height: auto;
 	overflow: hidden;
@@ -6,11 +23,30 @@ html,body {
 	padding-top: 35px;
 	text-align: center;
 	padding-bottom: 23px;
+	position:relative;
+	.toolbar{
+		position:absolute;
+		top: 0;
+		left: 0;
+		text-align: left;
+		width: 100%;
+		height: auto;
+		background-color:#fefefe;
+		.back{
+			float: left;
+			margin-left: 20px;
+			margin-top: 10px;
+			background-image:url(../images/back.png);
+			width: 30px;
+			height: 30px;
+		}
+	}
 	img {
 		display: block;
 		width: 30%;
 		margin: 0 auto;
 		margin-bottom: 30px;
+		margin-top: 30px;
 	}
 	ul.account {
 		margin-bottom: 0;

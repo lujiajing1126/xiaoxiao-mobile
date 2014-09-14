@@ -7,7 +7,8 @@
 		getAuthCode: function(event) {
 			var phoneNumber = $("#phoneNumber").val();
 			if (!SESSION) {
-
+				alert("同学，请检查你的网络！");
+				return;
 			}
 			if (expPhoneNumber.test($.trim(phoneNumber))) {
 				$.ajax({
@@ -32,9 +33,12 @@
 						}
 					},
 					error: function(error) {
-						errorHandler(error);
+						log(error);
+						errorHandler("同学，请检查你的网络！");
 					}
 				});
+			}else{
+				alert("同学，请检查你的手机号码！");
 			}
 
 			function errorHandler(error) {
@@ -85,9 +89,10 @@
 	var showAuthButton = function(obj) {
 		var phone = $(obj).val();
 		if (expPhoneNumber.test($.trim(phone))) {
-			$("#btn_auth_code").removeClass("off").addClass("on");
-		} else
-			$("#btn_auth_code").addClass("off").removeClass("on");
+			$("#btn_auth_code").removeAttr("disabled");
+		} else{
+			//$("#btn_auth_code").attr("disabled","disabled");
+		}
 	}
 
 	function createSession() {
@@ -101,6 +106,7 @@
 				}
 			},
 			error: function(error) {
+				log(error);
 				alert("请求失败，请检查您的网络！");
 			}
 		});
@@ -174,7 +180,8 @@
 					alert("请求失败，请检查您的网络！");
 				}
 			},
-			error: function() {
+			error: function(error) {
+				log(error);
 				alert("请求失败，请检查您的网络！");
 			}
 		});
@@ -214,7 +221,8 @@
 					alert("请求失败，请检查您的网络！");
 				}
 			},
-			error: function() {
+			error: function(error) {
+				log(error);
 				alert("请求失败，请检查您的网络！");
 			}
 		});
@@ -237,8 +245,14 @@
 				}
 			},
 			error: function(error) {
+				log(error);
 				alert("请求失败，请检查您的网络！");
 			}
 		});
+	}
+
+	function log(message){
+		if(window.console&&window.console.log)
+			console.log(message);
 	}
 })();

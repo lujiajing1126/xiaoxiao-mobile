@@ -44,30 +44,42 @@ span.spot {
 			display: table;
 			width: 100%;
 			min-height: 60px;
-			border-bottom:1px solid #e0e0e0;
-			div {
+			border-bottom: 1px solid #e0e0e0;
+			>div,>a {
 				display: table-cell;
 				vertical-align: middle;
+			}
+			div.item{
+				width: 30px;
+				div{
+					width: 30px;
+				}
+				text-align: center;
 			}
 			div.logo, div.button {
 				width: 80px;
 				text-align: center;
 			}
-			div.logo{
+			div.logo {
 				width: 65px;
-				background-size:50px;
-				background-repeat:no-repeat;
-				background-position:center;
+				.inner-logo {
+					width: 50px;
+					height: 50px;
+					background-size: 90%;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
 			}
 			div.button {
 				button {
-					height: 40px;
-					width: 80px;
+					height: 30px;
+					width: 70px;
 					color: #fff;
 					border-radius: 10px;
-					font-size: 13px;
+					font-size: 12px;
 					border: none;
 					outline: none;
+					margin: 5px;
 					&.apply {
 						background-color: #00D7FF;
 					}
@@ -79,6 +91,10 @@ span.spot {
 					}
 					&.admin {
 						background-color: #29b709;
+					}
+					&.bitch{
+						background-color:#c9c9c9;
+						border-radius:2px;
 					}
 				}
 			}

@@ -13,7 +13,7 @@ $ ->
 			key = v.split('=')[0]
 			value = v.split('=')[1]
 			return {name:key,value:value}
-	redirectTo =  'index.html'
+	redirectTo =  'apply.html'
 	flag = param.value if param.name is 'first' for param in searchParamsArr if searchParamsArr?
 	console.log flag
 	reCalAnimation = ->
@@ -50,8 +50,8 @@ $ ->
 		evt.preventDefault()
 		username = $('#loginName').val()
 		password = $('input[name=password]').val()
-		console.log username
-		console.log password
+		#console.log username
+		#console.log password
 		if username.length is 0 or password.length > 12 or password.length < 3
 			notice.show text:'请检查您的用户名或密码'
 			return
