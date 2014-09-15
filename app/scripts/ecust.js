@@ -3,6 +3,10 @@
 	var SESSION = window.SESSION;
 	var expPhoneNumber = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/,
 		expStudentNumber = /\d+/;
+
+	var Schools = ["华东理工大学", "华东师范大学"],
+		school = Schools[school_index];
+
 	var actions = {
 		getAuthCode: function(event) {
 			var phoneNumber = $("#phoneNumber").val();
@@ -37,7 +41,7 @@
 						errorHandler("同学，请检查你的网络！");
 					}
 				});
-			}else{
+			} else {
 				alert("同学，请检查你的手机号码！");
 			}
 
@@ -58,16 +62,26 @@
 					userName = ipt_userName.val(),
 					studentNumber = ipt_studentNumber.val(),
 					grade = $("#grade").val();
-				var password = phoneNumber.slice(5, 11);
+				var password = phoneNumber.slice(5, 11),
+					district;
+
+				if (school == "华东师范大学") {
+					district = $("#schoolArea").val();
+				}
+
 				var data = {
 					phone_number: phoneNumber,
 					phone_number_verification_code: authCode,
 					password: password,
 					userName: userName,
 					studentNumber: studentNumber,
-					school: "华东理工大学",
+					school: school,
 					grade: grade
 				};
+				if (district) {
+					data.district = district;
+				}
+
 				signup(data, SESSION);
 			}
 		}
@@ -84,8 +98,8 @@
 			action = actions[actionName];
 		action && $.isFunction(action) && action.call($(this), event);
 	});
-	$(document).on("keyup",function(event){
-		if(event.keyCode==13){
+	$(document).on("keyup", function(event) {
+		if (event.keyCode == 13) {
 			event.preventDefault();
 		}
 	});
@@ -95,7 +109,7 @@
 		var phone = $(obj).val();
 		if (expPhoneNumber.test($.trim(phone))) {
 			$("#btn_auth_code").removeAttr("disabled");
-		} else{
+		} else {
 			//$("#btn_auth_code").attr("disabled","disabled");
 		}
 	}
@@ -204,17 +218,22 @@
 			},
 			success: function(data) {
 				if (data.status == "OK") {
-					var userId = data.userId;
-					update(userId, {
-						userInfo: {
-							name: vdata.userName
-						},
-						studentInfo: {
-							grade: +vdata.grade,
-							school: vdata.school,
-							studentId: vdata.studentNumber
+					var userId = data.userId,
+						userData = {
+							userInfo: {
+								name: vdata.userName,
+								nickName: vdata.userName
+							},
+							studentInfo: {
+								grade: +vdata.grade,
+								school: vdata.school,
+								studentId: vdata.studentNumber
+							}
+						};
+						if(vdata.district){
+							userData.studentInfo.district=vdata.district;
 						}
-					}, session);
+					update(userId, userData, session);
 					try {
 						localStorage.setItem("userSession", session);
 					} catch (err) {
@@ -256,8 +275,8 @@
 		});
 	}
 
-	function log(message){
-		if(window.console&&window.console.log)
+	function log(message) {
+		if (window.console && window.console.log)
 			console.log(message);
 	}
 })();

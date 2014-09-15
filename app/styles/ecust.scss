@@ -35,3 +35,15 @@
 		font-weight: bold;
 	}
 }
+
+
+.form-group{
+	&.off {
+		display: none;
+	}
+}
+.form-control{
+	&.off{
+		display: none;
+	}
+}

@@ -35,11 +35,20 @@ $ ->
 			window.AppUser = $.extend data.userInfo, data.dynamic, data.studentInfo
 			$("span.userName").html data.userInfo.nickname
 			$("div.userName > span").html data.userInfo.nickname
-			$("a#school").html data.studentInfo.school
+
+			# if data.userInfo.school is "华东师范大学"
+			# 	$("a#school").html data.studentInfo.school+data.studentInfo.district
+			# else
+			# 	$("a#school").html data.studentInfo.school
+
 		.then (data)->
-			
+			# if AppUser.school is "华东师范大学"
+			# 	url="/api/assodir/"+AppUser.school+"/load?session=#{userSession}&including_fake=true"
+			# 	else
+			# 	url="/api/assodir/"+window.AppUser.school+"/load?session=#{userSession}&including_fake=true"
+			# alert url
 			Q $.ajax
-				url: "/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
+				url: url="/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
 				type: 'get'
 				dataType: 'json'
 		.then (data)->

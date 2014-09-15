@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
-	<title>华东理工大学社团报名系统</title>
+	<title>华东师范大学社团报名系统</title>
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
@@ -30,7 +30,7 @@
 <body>
 	<div class="header">
 		<div class="header-inner-wrapper">
-			<span>华东理工大学社团招新</span>
+			<span>华东师范大学社团招新</span>
 		</div>
 	</div>
 	<form class="form" autocomplete="off">
@@ -45,6 +45,15 @@
 			<label for="authCode" class="col-sm-2 control-label">验证码</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" id="authCode" placeholder="请输入验证码" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="schoolArea" class="col-sm-2 control-label">所在校区</label>
+			<div class="col-sm-10">
+				<select class="form-control" id="schoolArea">
+					<option value="中北校区">中北校区</option>
+					<option value="闵行校区">闵行校区</option>
+				</select>
 			</div>
 		</div>
 		<div class="form-group">
@@ -105,8 +114,8 @@
 	<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
 	<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
 	<!-- endbuild -->
-	
-	<script type="text/javascript">var school_index=0;</script>
+
+	<script type="text/javascript">var school_index=1;</script>
 
 	<!-- build:js({app,.tmp}) scripts/ecust.js -->
 	<script src="scripts/app.js"></script>
