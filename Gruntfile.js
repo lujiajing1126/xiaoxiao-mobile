@@ -213,7 +213,16 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the HTML file
         bowerInstall: {
             app: {
-                src: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html','<%= config.app %>/ecust_signup.html','<%= config.app %>/result.html','<%= config.app %>/apply.html','<%= config.app %>/ecust.html','<%= config.app %>/im_a_singer.html','<%= config.app %>/singer_signup.html'],
+                src: ['<%= config.app %>/index.html',
+                    '<%= config.app %>/login.html',
+                    '<%= config.app %>/reg.html',
+                    '<%= config.app %>/content.html',
+                    '<%= config.app %>/ecust_signup.html',
+                    '<%= config.app %>/result.html',
+                    '<%= config.app %>/apply.html',
+                    '<%= config.app %>/ecust.html',
+                    '<%= config.app %>/im_a_singer.html',
+                    '<%= config.app %>/singer_signup.html'],
                 exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
             },
             sass: {
@@ -243,7 +252,16 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html','<%= config.app %>/ecust_signup.html','<%= config.app %>/result.html','<%= config.app %>/apply.html','<%= config.app %>/ecust.html']
+            html: ['<%= config.app %>/index.html',
+                    '<%= config.app %>/login.html',
+                    '<%= config.app %>/reg.html',
+                    '<%= config.app %>/content.html',
+                    '<%= config.app %>/ecust_signup.html',
+                    '<%= config.app %>/result.html',
+                    '<%= config.app %>/apply.html',
+                    '<%= config.app %>/ecust.html',
+                    '<%= config.app %>/im_a_singer.html',
+                    '<%= config.app %>/singer_signup.html'],
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
