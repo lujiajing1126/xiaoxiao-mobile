@@ -39,18 +39,25 @@
 	</div>
 	<form class="form" autocomplete="off">
 		<div class="form-group">
-			<label for="phoneNumber" class="col-sm-2 control-label">是否为校校用户</label>
+			<label for="phoneNumber" class="col-sm-2 control-label">是否为校校用户（仅支持手机注册用户）</label>
 			<div class="col-sm-10">
 				<div class="form-control">
 					<label class="xx-input-label">
-						<input type="radio" name="isXiaoxiao" class="xx-input" checked value="true" />
+						<input type="radio" name="isXiaoxiao" class="xx-input"  value="true" />
 						是
 					</label>
 					<label class="xx-input-label">
-						<input type="radio" name="isXiaoxiao" class="xx-input" value="false" />
+						<input type="radio" name="isXiaoxiao" class="xx-input" checked value="false" />
 						否
 					</label>
 				</div>
+			</div>
+		</div>
+		<div class="form-group" id="tips_wrapper">
+			<div class="col-sm-12">
+				请确保你已经完善过你的姓名和学号！您可以
+				<a href="http://xiaoxiao.la/entry/download">下载</a>
+				校校App完善个人信息。
 			</div>
 		</div>
 		<div class="form-group">
