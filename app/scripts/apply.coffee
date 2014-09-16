@@ -42,9 +42,9 @@ $ ->
 			# 	$("a#school").html data.studentInfo.school
 
 		.then (data)->
-			url=if AppUser.school is "华东师范大学" then "/api/assodir/#{AppUser.school}/load?session=#{userSession}&including_fake=true" else "/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
+			#url=if AppUser.school is "华东师范大学" then "/api/assodir/#{AppUser.school}/load?session=#{userSession}&including_fake=true" else "/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
 			Q $.ajax
-				url: url
+				url: "/api/assodir/#{AppUser.school}/load?session=#{userSession}&including_fake=true"
 				type: 'get'
 				dataType: 'json'
 		.then (data)->
