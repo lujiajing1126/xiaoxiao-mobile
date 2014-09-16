@@ -42,19 +42,14 @@ $ ->
 			# 	$("a#school").html data.studentInfo.school
 
 		.then (data)->
-			# if AppUser.school is "华东师范大学"
-			# 	url="/api/assodir/"+AppUser.school+"/load?session=#{userSession}&including_fake=true"
-			# 	else
-			# 	url="/api/assodir/"+window.AppUser.school+"/load?session=#{userSession}&including_fake=true"
-			# alert url
+			url=if AppUser.school is "华东师范大学" then "/api/assodir/#{AppUser.school}/load?session=#{userSession}&including_fake=true" else "/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
 			Q $.ajax
-				url: url="/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
+				url: url
 				type: 'get'
 				dataType: 'json'
 		.then (data)->
 			html = template 'orgList',{organizations: data.organizations}
 			$('ul.list-wrapper-list').html html
-			#$(".list-wrapper-item .title").width $(window).width()-190
 			$("#page_title").html window.AppUser.school+"社团列表"
 		.done ->
 			setTimeout ->

@@ -77,11 +77,11 @@
 	$(document).on("change", "[name=isXiaoxiao]", function(event) {
 		isXiaoxiao = $(this).val() == "true";
 		if (isXiaoxiao) {
-			$("#authCode,#userName").parents(".form-group").addClass("off");
+			$("#authCode,#userName,#studentNumber").parents(".form-group").addClass("off");
 			$("#btn_auth_code").addClass("off");
 			$("#password").parents(".form-group").removeClass("off");
 		} else {
-			$("#authCode,#userName").parents(".form-group").removeClass("off");
+			$("#authCode,#userName,#studentNumber").parents(".form-group").removeClass("off");
 			$("#btn_auth_code").removeClass("off");
 			$("#password").parents(".form-group").addClass("off");
 		}
@@ -126,10 +126,12 @@
 	function signupThenSignup() {
 		var ipt_phoneNumber = $("#phoneNumber"),
 			ipt_authCode = $("#authCode"),
-			ipt_userName = $("#userName");
+			ipt_userName = $("#userName"),
+			ipt_studentNumber = $("#studentNumber");
 		var phoneNumber = ipt_phoneNumber.val(),
 			authCode = ipt_authCode.val(),
-			userName = ipt_userName.val();
+			userName = ipt_userName.val(),
+			studentNumber=ipt_studentNumber.val();
 		var msg;
 		if (!expPhoneNumber.test($.trim(phoneNumber))) {
 			formErrorTips("手机号码格式不对！", ipt_phoneNumber);
@@ -143,8 +145,17 @@
 			formErrorTips("姓名不能为空！", ipt_userName);
 			return;
 		}
-		signup(phoneNumber, userName, authCode, SESSION, function(data) {
+		if (!expStudentNumber.test(studentNumber)) {
+			formErrorTips("请填写正确的学号！", ipt_studentNumber);
+			return;
+		}
+		signup(phoneNumber, userName,studentNumber, authCode, SESSION, function(data) {
 			if (data.status != "OK") {
+				if(data.status=="Error"&&data.message=="登录名已被占用"){
+					alert("同学，你已经是校校用户了，可以直接报名哦！");
+					$("[name=isXiaoxiao][value=true]").trigger("click");
+					return;
+				}
 				alert(data.status + "：" + data.message);
 				return;
 			}
@@ -155,7 +166,7 @@
 					return;
 				}
 				var userId = data.userId;
-				update(userId, userName, SESSION, function(data) {
+				update(userId, userName,studentNumber, SESSION, function(data) {
 					if (data.status != "OK") {
 						alert(data.status + "：" + data.message);
 						return;
@@ -202,7 +213,7 @@
 	}
 
 	//注册
-	function signup(phoneNumber, userName, authCode, session, success, error) {
+	function signup(phoneNumber, userName,studentNumber, authCode, session, success, error) {
 		$.ajax({
 			url: window.XXWEB.namespace + 'account/register',
 			type: 'post',
@@ -234,7 +245,7 @@
 	}
 
 	//登陆之后修改个人信息
-	function update(userId, userName, session, success, error) {
+	function update(userId, userName,studentNumber, session, success, error) {
 		var data = {
 			userInfo: {
 				name: userName
@@ -254,7 +265,7 @@
 	}
 
 	function baoming() {
-		var eventId = "";
+		var eventId = "54090a84e4b07212ac847349";
 		$.ajax({
 			url: '/api/event/' + eventId + '/sign_up',
 			type: 'post',

@@ -213,7 +213,7 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the HTML file
         bowerInstall: {
             app: {
-                src: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html','<%= config.app %>/ecust_signup.html','<%= config.app %>/result.html','<%= config.app %>/apply.html','<%= config.app %>/ecust.html'],
+                src: ['<%= config.app %>/index.html','<%= config.app %>/login.html','<%= config.app %>/reg.html','<%= config.app %>/content.html','<%= config.app %>/ecust_signup.html','<%= config.app %>/result.html','<%= config.app %>/apply.html','<%= config.app %>/ecust.html','<%= config.app %>/im_a_singer.html','<%= config.app %>/singer_signup.html'],
                 exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
             },
             sass: {
@@ -367,6 +367,13 @@ module.exports = function (grunt) {
                 cwd: 'app/images',
                 src: ['background.jpg','2.png'],
                 dest: '<%= config.dist %>/images'
+            },
+            js: {
+                expand: true,
+                dot: true,
+                cwd: 'app/scripts',
+                src: ['{,*/}*.js'],
+                dest: '<%= config.dist %>/scripts'
             }
         },
 
@@ -402,6 +409,7 @@ module.exports = function (grunt) {
                 'coffee',
                 'sass',
                 'copy:styles',
+                'copy:js',
                 'imagemin',
                 'svgmin'
             ]

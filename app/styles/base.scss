@@ -105,3 +105,104 @@ input.form-control:-webkit-autofill {
         }
     }
 }
+/* *
+* 自定义checkbox、radio样式 */
+$theme-color:#2cb72e;
+input[type=checkbox].xx-input, input[type=radio].xx-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    box-shadow: inset 0px 0px 0px 1px $theme-color !important;
+    -ms-box-shadow: inset 0px 0px 0px 1px $theme-color !important;
+    -o-box-shadow: inset 0px 0px 0px 1px $theme-color !important;
+    -moz-box-shadow: inset 0px 0px 0px 1px $theme-color !important;
+    -webkit-box-shadow: inset 0px 0px 0px 1px $theme-color !important;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    line-height: inline-block;
+    padding: 0px;
+    position: relative;
+    margin: -2px 5px 0 0;
+    width: 20px;
+    outline: 0;
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+    background: white;
+}
+input[type=checkbox].xx-input:checked, input[type=radio].xx-input:checked {
+    box-shadow: inset 0px 0px 0px 20px $theme-color !important;
+    -o-box-shadow: inset 0px 0px 0px 20px $theme-color !important;
+    -webkit-box-shadow: inset 0px 0px 0px 20px $theme-color !important;
+    -moz-box-shadow: inset 0px 0px 0px 20px $theme-color !important;
+    -ms-box-shadow: inset 0px 0px 0px 20px $theme-color !important;
+}
+.xx-input-label {
+    margin: 2px 0 0 10px;
+    padding-top: 2px;
+    cursor: pointer;
+    .xx-input, span {
+        float: left;
+    }
+    span {
+        margin-top: 1px;
+    }
+}
+.xx-input-container {
+    padding-top: 8px;
+    height: 30px;
+}
+//input标签样式，正常状态下显示为span的样式，focus状态下表现为input
+.xx-text-span {
+    border: 1px solid #fff;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    width:80%;
+    margin:0 auto;
+    &:focus {
+        border-color:$theme-color;
+        background-color: #f2f2f2;
+    }
+}
+body{
+    overflow:hidden;
+}
+.wrapper {
+    width: 100%;
+    height:100%;
+    position:relative;
+    .inner-image {
+        width: 100%;
+    }
+    .header{
+        position:absolute;
+        width: 100%;
+        top: 20px;
+        font-size: 24px;
+        text-align: center;
+        color: #fff;
+    }
+    .footer{
+        position:absolute;
+        width: 100%;
+        bottom: 80px;
+        img{
+            display: block;
+            width: 200px;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}
