@@ -30,15 +30,21 @@
 	}
 }
 .use-button {
-	background-color: #E9F5F7;
+	background-color: #ebf5f7;
 	width: 100%;
-	padding-top: 35px; 
+	padding-top: 35px;
 	text-align: center;
 	padding-bottom: 30px;
 	img.use {
 		width: 50%;
 		margin: 0 auto;
 		margin-top: 30px;
+	}
+	hr{
+		margin: 30px auto 10px;
+		width: 60%;
+		border-top:2px solid #dae4e6;
+		border-bottom:2px solid #dae4e6;
 	}
 }
 .footer {

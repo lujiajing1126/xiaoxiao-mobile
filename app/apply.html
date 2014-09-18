@@ -59,7 +59,7 @@
             {{if organization.id}}
             <li class="list-wrapper-item">
                 <div class="item">
-                    <div>{{i+1}} .</div></div> 
+                    <div>{{organization.code}}</div></div> 
                 <div class="logo" >
                     <a href="http://xiaoxiao.la/organization.html?oid={{organization.id}}">
                     <div class="inner-logo" style="background-image:url(/api/org/{{organization.id}}/logo),url(images/2.png);"></div>
@@ -94,7 +94,7 @@
             {{if !organization.id}}
             <li class="list-wrapper-item">
                 <div class="item">
-                    <div>{{i+1}} .</div></div> 
+                    <div>{{organization.code}}</div></div> 
                 <div class="logo" >
                     <div class="inner-logo" style="background-image:url(/api/org/{{organization.id}}/logo),url(images/2.png);"></div>
                 </div>

@@ -1,12 +1,18 @@
-;
+(function() {
+	var firstClick = true;
+	window.callClick = function() {
+		if (firstClick) {
+			alert('讨厌!猴急!老娘一会再为你掀面纱!');
+			firstClick = false;
+		} else {
+			alert('还戳我!不是说了一会嘛!');
+		}
+	}
+})();
 (function() {
 	var SESSION = window.SESSION;
 	var expPhoneNumber = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/,
 		expStudentNumber = /\d+/;
-
-	var Schools = ["华东理工大学", "华东师范大学", "上海外国语大学"],
-		school = Schools[school_index];
-
 	var actions = {
 		getAuthCode: function(event) {
 			var phoneNumber = $("#phoneNumber").val();
@@ -30,10 +36,10 @@
 							btn_auth_code.attr("disabled", "disabled").text("发送成功，60秒后重试！");
 							var timer = function() {
 								btn_auth_code.text("发送成功，" + (--delay) + "秒后重试！");
-								if(delay==0){
+								if (delay == 0) {
 									btn_auth_code.removeAttr("disabled").text("重新发送！");
 									return;
-								} 
+								}
 								setTimeout(function() {
 									timer();
 								}, 1000);
@@ -68,7 +74,9 @@
 				var ipt_phoneNumber = $("#phoneNumber"),
 					ipt_authCode = $("#authCode"),
 					ipt_userName = $("#userName"),
-					ipt_studentNumber = $("#studentNumber");
+					ipt_studentNumber = $("#studentNumber"),
+					sel_school = $("#schools"),
+					sel_schoolArea = $("#schoolArea");
 
 				var phoneNumber = ipt_phoneNumber.val(),
 					authCode = ipt_authCode.val(),
@@ -76,11 +84,10 @@
 					studentNumber = ipt_studentNumber.val(),
 					grade = $("#grade").val();
 				var password = phoneNumber.slice(5, 11),
-					district;
-
-				if (school == "华东师范大学") {
-					district = $("#schoolArea").val();
-				}
+					schoolVal = sel_school.val(),
+					schoolAreaVal = sel_schoolArea.val(),
+					school = sel_school.find("option:selected").text(),
+					district = sel_schoolArea.find("option:selected").text();
 
 				var data = {
 					phone_number: phoneNumber,
@@ -97,8 +104,30 @@
 
 				signup(data, SESSION);
 			}
+		},
+		selectSchool: function() {
+			var domSelect = this,
+				schoolId = domSelect.val(),
+				domSchoolArea = $("#schoolArea");
+			if (!schoolId) {
+				renderSelect(domSchoolArea, []);
+			} else {
+				getSchools(schoolId, SESSION, function(data) {
+					if (data.status == "OK") {
+						renderSelect($("#schoolArea"), data.children);
+					}
+				}, function(error) {
+					log(error);
+					alert("请求失败，请检查您的网络！");
+				});
+			}
 		}
 	};
+	/**
+	 * page init
+	 * create session & query school list
+	 * add events listener
+	 */
 	createSession();
 	$(document).on("keyup change", "#phoneNumber", function(event) {
 		showAuthButton(this);
@@ -108,6 +137,11 @@
 	});
 	$(document).on("touchend", "[data-xx-action]", function(event) {
 		var actionName = $(this).attr("data-xx-action"),
+			action = actions[actionName];
+		action && $.isFunction(action) && action.call($(this), event);
+	});
+	$(document).on("change", "[data-xx-change-action]", function(event) {
+		var actionName = $(this).attr("data-xx-change-action"),
 			action = actions[actionName];
 		action && $.isFunction(action) && action.call($(this), event);
 	});
@@ -135,6 +169,14 @@
 			success: function(data) {
 				if (data && data.status == "OK") {
 					SESSION = window.SESSION = data.session;
+					getSchools(0, SESSION, function(data) {
+						if (data.status == "OK") {
+							renderSelect($("#schools"), data.children);
+						}
+					}, function(error) {
+						log(error);
+						alert("请求失败，请检查您的网络！");
+					});
 				}
 			},
 			error: function(error) {
@@ -144,15 +186,39 @@
 		});
 	}
 
+	function getSchools(parentId, session, success, error) {
+		$.ajax({
+			url: window.XXWEB.namespace + 'info/load_student_residence_info_directory',
+			dataType: 'json',
+			data: {
+				id: parentId,
+				session: session
+			},
+			success: success,
+			error: error
+		});
+	}
+
+	function renderSelect(select, childrenList) {
+		var optionsHtml = ['<option  value="0">--请选择--</option>'];
+		$.each(childrenList, function(idx, item) {
+			optionsHtml.push('<option value="' + item.id + '">' + item.name + '</option>');
+		});
+		select.html(optionsHtml.join(''));
+	}
+
+
 	function validateForm() {
 		var ipt_phoneNumber = $("#phoneNumber"),
 			ipt_authCode = $("#authCode"),
 			ipt_userName = $("#userName"),
-			ipt_studentNumber = $("#studentNumber");
+			ipt_studentNumber = $("#studentNumber"),
+			sel_school = $("#schools");
 		var phoneNumber = ipt_phoneNumber.val(),
 			authCode = ipt_authCode.val(),
 			userName = ipt_userName.val(),
-			studentNumber = ipt_studentNumber.val();
+			studentNumber = ipt_studentNumber.val(),
+			schoolId = +sel_school.val(); //schoolId must be int
 
 		var resault = true;
 		if (!expPhoneNumber.test($.trim(phoneNumber))) {
@@ -160,6 +226,9 @@
 			resault = false;
 		} else if (authCode.length != 6) {
 			formErrorTips("验证码必须为6位数字！", ipt_authCode);
+			resault = false;
+		} else if (!schoolId) {
+			formErrorTips("请选择所在学校！", sel_school);
 			resault = false;
 		} else if (userName.length == 0) {
 			formErrorTips("姓名不能为空！", ipt_userName);
@@ -240,6 +309,7 @@
 							studentInfo: {
 								grade: +vdata.grade,
 								school: vdata.school,
+								district: vdata.district,
 								studentId: vdata.studentNumber
 							}
 						};

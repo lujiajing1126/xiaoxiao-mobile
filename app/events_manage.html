@@ -20,65 +20,44 @@
     <!-- build:css(.tmp) styles/base.css -->
     <link rel="stylesheet" href="styles/base.css">
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/signup_ecust.css -->
-    <link rel="stylesheet" href="styles/signup_base.css">
-    <link rel="stylesheet" href="styles/signup_ecust.css">
+    <!-- build:css(.tmp) styles/general.css -->
+    <link rel="stylesheet" href="styles/general.css">
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
 </head>
 <body>
-    <div id="logo">
-        <span>华东师范大学社团联合会</span>
-        <img src="images/huashida_03.png" id="ecust" />
-        <img id="baituandazhan" src="images/hsd_xl_03.png" />
-    </div>
-    <div class="use-button">
-        <!--  <a href="javascript:callClick();">
-        <img class="use" src="images/first_use.png" id="first" />
+    <div class="wrapper header-wrapper">
+        <!-- <span>华东师范大学社团联合会</span>
+    -->
+    <img src="images/signup_header.png" class="logo" />
+</div>
+<div class="wrapper title-wrapper">
+    <img src="images/signup_title.png" />
+</div>
+<div class="wrapper btn-wrapper">
+    <!-- <a href="javascript:callClick();">
+        <img  src="images/first_use.png" />
     </a>
+    <hr/>
     <a href="javascript:callClick();">
-        <img class="use" src="images/use_again.png" id="again" />
+        <img src="images/use_again.png" />
     </a> -->
-   
-    <a href="./event_signup.html">
-        <img class="use" src="images/first_use.png" id="first" />
-    </a>
-    <a href="./login.html?continue=apply.html">
-        <img class="use" src="images/use_again.png" id="again" />
-    </a>
+
+     <a href="./event_signup.html">
+    <img src="images/first_use.png" />
+</a>
+<hr/>
+<a href="./login.html?continue=apply.html">
+    <img src="images/use_again.png" />
+</a>
 
 </div>
 <div class="footer"></div>
-<!-- build:js scripts/vendor.js -->
-<!-- bower:js -->
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/q/q.js"></script>
-<script src="../bower_components/holderjs/holder.js"></script>
-<script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-<script src="../bower_components/artTemplate/dist/template-debug.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
-<!-- build:js scripts/plugins.js -->
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-<script src="../bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js"></script>
-<!-- endbuild -->
 
-<!-- build:js({app,.tmp}) scripts/events_manage.js -->
-<script src="scripts/libs/notice.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/signup_ecust.js"></script>
+<!-- build:js({app,.tmp}) scripts/event_signup.js -->
+<script src="scripts/event_signup.js"></script>
 <!-- endbuild -->
 </body>
 </html>

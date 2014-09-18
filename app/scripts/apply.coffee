@@ -36,13 +36,7 @@ $ ->
 			$("span.userName").html data.userInfo.nickname
 			$("div.userName > span").html data.userInfo.nickname
 
-			# if data.userInfo.school is "华东师范大学"
-			# 	$("a#school").html data.studentInfo.school+data.studentInfo.district
-			# else
-			# 	$("a#school").html data.studentInfo.school
-
 		.then (data)->
-			#url=if AppUser.school is "华东师范大学" then "/api/assodir/#{AppUser.school}/load?session=#{userSession}&including_fake=true" else "/api/assodir/#{window.AppUser.school}/load?session=#{userSession}&including_fake=true"
 			Q $.ajax
 				url: "/api/assodir/#{AppUser.school}/load?session=#{userSession}&including_fake=true"
 				type: 'get'

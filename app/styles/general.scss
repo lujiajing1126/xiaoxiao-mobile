@@ -1,0 +1,115 @@
+.wrapper{
+	width: 100%;
+}
+.header-wrapper {
+	height: auto;
+	position: relative;
+	// span {
+	// 	margin: 0 auto 0 10%;
+	// 	width: 100%;
+	// 	text-align: center;
+	// 	font-size: 16px;
+	// 	color: #fff;
+	// 	line-height: 350px;
+	// 	font-family: Helvetica, Tahoma, Arial, 'Microsoft YaHei', 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+	// }
+	img.logo {
+		width: 100%;
+		display: block;
+		margin:0 auto;
+	}
+}
+.title-wrapper{
+	height:auto;
+	background-color: #ebf5f7;
+	padding:15px 0;
+	img{
+		display: block;
+		width: 70%;
+		margin:0 auto;
+	}
+}
+
+.btn-wrapper {
+	background-color: #ebf5f7;
+	padding-top: 15px;
+	padding-bottom: 30px;
+	img {
+		display: block;
+		width: 50%;
+		margin: 0 auto;
+	}
+	hr{
+		margin: 20px auto;
+		width: 70%;
+		border-top:2px solid #dae4e6;
+		border-bottom:2px solid #dae4e6;
+	}
+}
+.footer {
+	width: 100%;
+	background: transparent url('../images/xiaoxiao_baoming.png');
+	background-size: 70%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-origin: content;
+	height: 60px;
+	padding: 15px;
+}
+
+//报名表单页面
+.header{
+	margin-bottom:5px;
+}
+.btn {
+	&.on {
+		display: block;
+	}
+	&.off {
+		display: none;
+	}
+}
+#btn_auth_code{
+	margin-top:5px;
+}
+#msg_tips{
+	display:none;
+	&.on{
+		display: block;
+	}
+}
+
+.header-inner-wrapper{
+	height:60px;
+	width:100%;
+	background-color:#f5f5f5;
+	background-image:url(../images/xiaoxiao_logo.png);
+	background-position:10px center;
+	background-repeat:no-repeat;
+	background-size:40px;
+	text-align:center;
+	line-height:60px;
+	span{
+		margin: 0 auto;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	&.shangda{
+		background-image:url(../images/shangdaLOGO.jpg);
+	}
+	&.shangwai{
+		background-image:url(../images/shangwai_stl_logo.png);
+	}
+}
+
+
+.form-group{
+	&.off {
+		display: none;
+	}
+}
+.form-control{
+	&.off{
+		display: none;
+	}
+}
