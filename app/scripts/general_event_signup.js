@@ -310,7 +310,6 @@
 	}
 
 	function baoming(target) {
-		var eventId = eventId;
 		$.ajax({
 			url: '/api/event/' + eventId + '/sign_up',
 			type: 'post',
