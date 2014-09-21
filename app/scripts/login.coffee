@@ -13,9 +13,13 @@ $ ->
 			key = v.split('=')[0]
 			value = v.split('=')[1]
 			return {name:key,value:value}
-	redirectTo =  'apply.html'
-	flag = param.value if param.name is 'first' for param in searchParamsArr if searchParamsArr?
-	console.log flag
+	#redirectTo='apply.html'
+	#flag = param.value if param.name is 'first' for param in searchParamsArr if searchParamsArr?
+	goTo=param.value if param.name is 'continue' for param in searchParamsArr if searchParamsArr?
+	console.log goTo
+	redirectTo=goTo||'index.html'
+	console.log redirectTo
+	console.log searchParamsArr
 	reCalAnimation = ->
 		begin = ongoingTouches.beginY || 0
 		end = ongoingTouches.endY || 0
