@@ -224,7 +224,8 @@ module.exports = function (grunt) {
                     '<%= config.app %>/im_a_singer.html',
                     '<%= config.app %>/singer_signup.html',
                     '<%= config.app %>/events_manage.html',
-                    '<%= config.app %>/event_signup.html'],
+                    '<%= config.app %>/event_signup.html',
+                    '<%= config.app %>/sl_jpjs_zx_form.html'],
                 exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
             },
             sass: {
@@ -265,7 +266,8 @@ module.exports = function (grunt) {
                     '<%= config.app %>/im_a_singer.html',
                     '<%= config.app %>/singer_signup.html',
                     '<%= config.app %>/events_manage.html',
-                    '<%= config.app %>/event_signup.html'],
+                    '<%= config.app %>/event_signup.html',
+                    '<%= config.app %>/sl_jpjs_zx_form.html'],
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration

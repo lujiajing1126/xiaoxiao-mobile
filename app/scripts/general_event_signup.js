@@ -4,7 +4,7 @@
 	var expPhoneNumber = /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/,
 		expStudentNumber = /\d+/,
 		isXiaoxiao = true,
-		eventId = "54090a84e4b07212ac847349",
+		eventId = "541ef11fe4b0803e5bac1bb2",
 		schoolName = "上海理工大学";
 
 	var actions = {

@@ -94,8 +94,9 @@
 	line-height: 60px;
 	span {
 		margin: 0 auto;
-		font-size: 18px;
+		font-size: 20px;
 		font-weight: bold;
+		color:#444;
 	}
 	&.shangda {
 		background-image: url(../images/shangdaLOGO.jpg);
@@ -104,7 +105,7 @@
 		background-image: url(../images/shangwai_stl_logo.png);
 	}
 	&.shangli_jiangpanjushe{
-		background-image:url(../images/xiaoxiao_logo.png);
+		background-image:url(../images/jiangpanjushe.png);
 	}
 }
 .form-group {
