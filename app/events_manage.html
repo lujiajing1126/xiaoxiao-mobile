@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>社团报名系统</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" size="72x72" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" size="114x114" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" size="144x144" href="/apple-touch-icon.png" />
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="mobile-web-app-capable" content="yes"> 
+        <title>社团报名系统</title>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" size="57x57" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" size="72x72" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" size="114x114" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" size="144x144" href="/apple-touch-icon.png" />
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
 
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/base.css -->
-    <link rel="stylesheet" href="styles/base.css">
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/general.css -->
-    <link rel="stylesheet" href="styles/general.css">
-    <!-- endbuild -->
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="../bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
-</head>
-<body>
-    <div class="wrapper header-wrapper">
-        <!-- <span>华东师范大学社团联合会</span>
-    -->
-    <img src="images/signup_header.png" class="logo" />
-</div>
-<div class="wrapper title-wrapper">
-    <img src="images/signup_title.png" />
-</div>
-<div class="wrapper btn-wrapper">
-    <!-- <a href="javascript:callClick();">
-        <img  src="images/first_use.png" />
-    </a>
-    <hr/>
-    <a href="javascript:callClick();">
-        <img src="images/use_again.png" />
-    </a> -->
-     <a href="./event_signup.html">
-    <img src="images/first_use.png" />
-</a>
-<hr/>
-<a href="./login.html?continue=apply.html">
-    <img src="images/use_again.png" />
-</a>
-
-</div>
-<div class="footer"></div>
-
-<!-- build:js({app,.tmp}) scripts/event_signup.js -->
-<script src="scripts/event_signup.js"></script>
-<!-- endbuild -->
-</body>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/base.css -->
+        <link rel="stylesheet" href="styles/base.css">
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/signup_ecust.css -->
+        <link rel="stylesheet" href="styles/signup_base.css">
+        <link rel="stylesheet" href="styles/signup_ecust.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="../bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <div id="logo">
+            <span>华东师范大学社团招新</span>
+            <img src="images/huashida_03.png" id="ecust" />
+            <img id="baituandazhan" src="images/hsd_xl_03.png" />
+        </div>
+        <div class="use-button">
+           <!--  <a href="javascript:callClick();"><img class="use" src="images/first_use.png" id="first" /></a>
+            <a href="javascript:callClick();"><img class="use" src="images/use_again.png" id="again" /></a> -->
+            <a href="./huashi_zhaoxin_form.html">
+                <img class="use" src="images/first_use.png" id="first" />
+            </a>
+            <hr/>
+            <a href="./login.html?continue=apply.html">
+                <img class="use" src="images/use_again.png" id="again" />
+            </a>
+        </div>
+        <a href="http://xiaoxiao.la/entry/download">
+        <div class="footer">
+        </div></a>
+       
+    </body>
 </html>
