@@ -213,19 +213,7 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the HTML file
         bowerInstall: {
             app: {
-                src: ['<%= config.app %>/index.html',
-                    '<%= config.app %>/login.html',
-                    '<%= config.app %>/reg.html',
-                    '<%= config.app %>/content.html',
-                    '<%= config.app %>/ecust_signup.html',
-                    '<%= config.app %>/result.html',
-                    '<%= config.app %>/apply.html',
-                    '<%= config.app %>/ecust.html',
-                    '<%= config.app %>/im_a_singer.html',
-                    '<%= config.app %>/singer_signup.html',
-                    '<%= config.app %>/events_manage.html',
-                    '<%= config.app %>/event_signup.html',
-                    '<%= config.app %>/sl_jpjs_zx_form.html'],
+                src: ['<%= config.app %>/**/*.html'],
                 exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
             },
             sass: {
@@ -255,19 +243,7 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: ['<%= config.app %>/index.html',
-                    '<%= config.app %>/login.html',
-                    '<%= config.app %>/reg.html',
-                    '<%= config.app %>/content.html',
-                    '<%= config.app %>/ecust_signup.html',
-                    '<%= config.app %>/result.html',
-                    '<%= config.app %>/apply.html',
-                    '<%= config.app %>/ecust.html',
-                    '<%= config.app %>/im_a_singer.html',
-                    '<%= config.app %>/singer_signup.html',
-                    '<%= config.app %>/events_manage.html',
-                    '<%= config.app %>/event_signup.html',
-                    '<%= config.app %>/sl_jpjs_zx_form.html'],
+            html: ['<%= config.app %>/**/*.html'],
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
